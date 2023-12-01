@@ -27,6 +27,8 @@
 
 O Projeto Espaço Azul é uma ONG que oferece serviços, notícias e recursos para a comunidade autista e seus familiares, visando proporcionar apoio e assistência especializada.
 
+Este repositório contém o código-fonte do site do projeto, feito sem fins lucrativos e com o objetivo de ser uma plataforma online para a ONG.
+
 ## Funcionalidades
 
 - ...
