@@ -1,0 +1,42 @@
+generator client {
+    provider = "prisma-client-js"
+}
+
+datasource db {
+    provider = "postgresql"
+    url      = env("DATABASE_URL")
+}
+
+// Necessary for Next auth
+enum UserRole {
+    OWNER
+    ADMIN
+    STAFF
+    MEMBER
+}
+
+model Role {
+    id   String   @id @default(cuid())
+    role UserRole @unique
+
+    users User[]
+
+    @@map("roles")
+}
+
+model User {
+    id        String   @id @default(cuid())
+    usercode  Int      @unique @default(autoincrement()) // has to start at 10001
+    fullName  String
+    shortName String
+    password  String
+    salt      String
+    email     String?  @unique
+    image     String?
+    createdAt DateTime @default(now())
+
+    role   Role   @relation(fields: [roleId], references: [id], onDelete: Cascade)
+    roleId String
+
+    @@map("users")
+}
