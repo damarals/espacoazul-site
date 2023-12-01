@@ -42,8 +42,9 @@ export const passwordSchema = z
     return true
   })
 
-export const loginSchema = z.object({
+export const userAuthSchema = z.object({
   usercode: usercodeSchema,
   password: passwordSchema,
 })
-export type LoginSchema = z.infer<typeof loginSchema>
+
+export type LoginSchema = z.infer<typeof userAuthSchema>

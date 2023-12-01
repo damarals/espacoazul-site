@@ -1,6 +1,5 @@
 import { env } from '@/env'
 import { db } from '@/server/db'
-import { loginSchema } from '@/server/schemas/auth'
 import { PrismaAdapter } from '@next-auth/prisma-adapter'
 import { UserRole } from '@prisma/client'
 import bcrypt from 'bcrypt'
@@ -10,6 +9,8 @@ import {
   type NextAuthOptions,
 } from 'next-auth'
 import CredentialsProvider from 'next-auth/providers/credentials'
+
+import { userAuthSchema } from '@/lib/validations/auth'
 
 /**
  * Module augmentation for `next-auth` types. Allows us to add custom properties to the `session`
@@ -75,7 +76,7 @@ export const authOptions: NextAuthOptions = {
         password: { label: 'Password', type: 'password' },
       },
       authorize: async (credentials) => {
-        const res = await loginSchema.safeParseAsync(credentials)
+        const res = await userAuthSchema.safeParseAsync(credentials)
         if (!res.success) throw new Error('Invalid Credentials')
         const cred = res.data
 
@@ -103,6 +104,9 @@ export const authOptions: NextAuthOptions = {
       },
     }),
   ],
+  pages: {
+    signIn: '/entrar',
+  },
   session: { strategy: 'jwt', maxAge: 7 * 24 * 60 * 60 }, // session expires in 1 week
   secret: env.NEXTAUTH_SECRET,
 }
