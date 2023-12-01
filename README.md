@@ -12,7 +12,7 @@
     <img src="https://img.shields.io/badge/%40projetoespacoazul-E4405F?style=for-the-badge&logo=instagram&logoColor=white" alt="Instagram" />
   </a>
   <a href="https://github.com/damarals/espacoazul-site/blob/main/LICENSE">
-    <img src="https://img.shields.io/badge/AGPL3.0-blue?style=for-the-badge&label=licença&color=f80" alt="Licença" />
+    <img src="https://img.shields.io/badge/AGPLv3-blue?style=for-the-badge&label=licen%C3%A7a" alt="Licença" />
   </a>
 </p>
 
