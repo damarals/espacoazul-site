@@ -1,15 +1,24 @@
 import '@/styles/globals.css'
 
 import { ReactNode } from 'react'
-import { Inter } from 'next/font/google'
+import { Figtree, Petrona } from 'next/font/google'
 import { cookies } from 'next/headers'
 import { TRPCReactProvider } from '@/trpc/react'
 
+import { cn } from '@/lib/utils'
+import TailwindIndicator from '@/components/TailwindIndicator'
 import { Toaster } from '@/components/ui/toaster'
 
-const inter = Inter({
+const figtree = Figtree({
   subsets: ['latin'],
+  display: 'swap',
   variable: '--font-sans',
+})
+
+const petrona = Petrona({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-serif',
 })
 
 export const metadata = {
@@ -24,11 +33,15 @@ export default async function RootLayout({
   children: ReactNode
 }) {
   return (
-    <html lang="pt-br">
-      <body className={`font-sans ${inter.variable}`}>
+    <html
+      lang="pt-br"
+      className={cn('font-sans', figtree.variable, petrona.variable)}
+    >
+      <body>
         <TRPCReactProvider cookies={cookies().toString()}>
           {children}
           <Toaster />
+          <TailwindIndicator />
         </TRPCReactProvider>
       </body>
     </html>

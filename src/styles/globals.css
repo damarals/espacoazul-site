@@ -1,76 +1,108 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
- 
+
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* brand */
+    --primary-dark: #5B3478;
+    --primary: #8C50B9;
+    --primary-light: #AF85CE;
+    --primary-lighter: #EEE5F5;
+    --primary-lightest: #F9F6FC;
+ 
+    --secondary-dark: #A27754;
+    --secondary: #CB9569;
+    --secondary-light: #DBB596;
+    --secondary-lighter: #F7EFE9;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
- 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
- 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
- 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
- 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
- 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
- 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --dark: #46285D;
+    --light: #EAE9EB;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
- 
-    --radius: 0.5rem;
-  }
- 
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
- 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
- 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
- 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
- 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
- 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
- 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
- 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
- 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
+    /* (grey)scale */
+    --grey-lightest: #E7E2E0;
+    --white-ter: #EFEBE9;
+    --white-bis: #FAF7F5;
+    --white: #FFFFFF;
+
+    --grey-dark: #8A7D7F;
+    --grey: #9C9090;
+    --grey-light: #C8C0BD;
+    --grey-lighter: #DFDAD7;
+
+    --black: #130A1A;
+    --black-bis: #241B27;
+    --black-ter: #2D232E;
+    --grey-darker: #6D5F64;
+
+    /* palette */
+    --purple-dark: #803C88;
+    --purple: #AA50B5;
+    --purple-light: #C485CB;
+    --purple-lighter: #EEDCF0;
+
+    --pink-dark: #AA537C;
+    --pink: #E26EA5;
+    --pink-light: #EB9AC0;
+    --pink-lighter: #F9E2ED;
+
+    --red-dark: #C34450;
+    --red: #F45564;
+    --red-light: #F78893;
+    --red-lighter: #FDDDE0;
+
+    --coral-dark: #D97A37;
+    --coral: #FF8F41;
+    --coral-light: #FFB17A;
+    --coral-lighter: #FFE9D9;
+
+    --orange-dark: #D97A37;
+    --orange: #FF8F41;
+    --orange-light: #FFB17A;
+    --orange-lighter: #FFE9D9;
+
+    --yellow-dark: #D9A93D;
+    --yellow: #FFC748;
+    --yellow-light: #FFD87F;
+    --yellow-lighter: #FFEEC8;
+
+    --green-dark: #5E8442;
+    --green: #7DB058;
+    --green-light: #A4C88A;
+    --green-lighter: #E5EFDE;
+
+    --turquoise-dark: #009688;
+    --turquoise: #00C8B5;
+    --turquoise-light: #4DD9CB;
+    --turquoise-lighter: #CCF4F0;
+
+    --cyan-dark: #018FB0;
+    --cyan: #01BFEA;
+    --cyan-light: #4DD2F0;
+    --cyan-lighter: #CCF2FB;
+
+    --blue-dark: #065F9E;
+    --blue: #087FD2;
+    --blue-light: #52A5E0;
+    --blue-lighter: #CEE5F6;
   }
 }
- 
-@layer base {
-  * {
-    @apply border-border;
-  }
-  body {
-    @apply bg-background text-foreground;
-  }
+
+.bg-grainy {
+  background-image: url(/grainy-texture.png);
+  background-repeat: repeat;
+  background-size: 10rem;
+}
+
+.bg-radial {
+  background: radial-gradient(75% 75% at 50% 30%,var(--white-ter),#86c7f9);
+  background-image: radial-gradient(75% 75% at 50% 30%,var(--white-ter),#86c7f9);
+}
+
+.bg-wave {
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNDQwIDc2IiB3aWR0aD0iMTQ0MCIgaGVpZ2h0PSI3NiI+CiAgPHBhdGggZmlsbD0iI2ZmZmZmZiIgZmlsbC1vcGFjaXR5PSIxIiBkPSJNMTQ0MC0uMDA3Vjc2SDBWLS4wMDdDMjI2LjY4IDIzLjk5OCA0NjYuNjggMzYgNzIwIDM2czQ5My4zMi0xMi4wMDIgNzIwLTM2LjAwN3oiPjwvcGF0aD4KPC9zdmc+);
+  background-position: bottom;
+  background-size: 105% auto;
+  background-repeat: no-repeat;
+  z-index: 20;
 }
