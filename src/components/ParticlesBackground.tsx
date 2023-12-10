@@ -139,11 +139,11 @@ export default function ParticlesBackground() {
           opacity: {
             random: {
               enable: true,
-              minimumValue: 0.3,
+              minimumValue: 0.2,
             },
             value: {
-              min: 0.3,
-              max: 0.6,
+              min: 0.2,
+              max: 0.5,
             },
             animation: {
               count: 0,
@@ -158,57 +158,20 @@ export default function ParticlesBackground() {
               minimumValue: 0.2,
             },
           },
-          // shape: {
-          //   close: true,
-          //   fill: true,
-          //   options: {
-          //     character: {
-          //       fill: false,
-          //       font: 'Verdana',
-          //       style: '',
-          //       value: '*',
-          //       weight: '400',
-          //     },
-          //     char: {
-          //       fill: false,
-          //       font: 'Verdana',
-          //       style: '',
-          //       value: '*',
-          //       weight: '400',
-          //     },
-          //     polygon: {
-          //       sides: 5,
-          //     },
-          //     star: {
-          //       sides: 5,
-          //     },
-          //     image: [
-          //       {
-          //         src: 'https://www.clker.com/cliparts/A/3/h/e/X/U/green-jigsaw-puzzle-piece-large-md.png',
-          //         width: 32,
-          //         height: 32,
-          //       },
-          //       {
-          //         src: 'https://clipart-library.com/images_k/jigsaw-transparent/jigsaw-transparent-25.png',
-          //         width: 32,
-          //         height: 32,
-          //       },
-          //     ],
-          //     images: [
-          //       {
-          //         src: 'https://www.clker.com/cliparts/A/3/h/e/X/U/green-jigsaw-puzzle-piece-large-md.png',
-          //         width: 32,
-          //         height: 32,
-          //       },
-          //       {
-          //         src: 'https://clipart-library.com/images_k/jigsaw-transparent/jigsaw-transparent-25.png',
-          //         width: 32,
-          //         height: 32,
-          //       },
-          //     ],
-          //   },
-          //   type: 'image',
-          // },
+          shape: {
+            close: true,
+            fill: true,
+            options: {
+              images: [
+                {
+                  src: '/puzzle-piece.svg',
+                  width: 32,
+                  height: 32,
+                },
+              ],
+            },
+            type: 'image',
+          },
           size: {
             random: {
               enable: false,

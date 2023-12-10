@@ -1,3 +1,5 @@
+import Image from 'next/image'
+
 import { Button } from '@/components/ui/button'
 
 function Hero() {
@@ -21,6 +23,32 @@ function Hero() {
         <Button className="rounded-full bg-blue px-9 py-6 text-base font-extrabold text-white transition-all md:text-xl">
           Entre em contato
         </Button>
+      </div>
+      <div className="relative w-full">
+        <div className="absolute -top-4 left-1/2 h-[600px] w-[80vw] -translate-x-1/2 sm:top-8 sm:w-[440px] md:-top-10 md:left-[20%] md:h-[450px] md:w-[320px] md:-translate-x-1/3 lg:left-[15%] xl:left-[24%]">
+          <Image
+            src="/image.webp"
+            fill
+            className="object-contain"
+            alt="criança brincando"
+          />
+        </div>
+        <div className="absolute left-1/2 top-8 z-20 hidden h-[450px] w-[320px] -translate-x-1/2 lg:block">
+          <Image
+            src="/image (1).webp"
+            fill
+            className="object-contain"
+            alt="criança brincando"
+          />
+        </div>
+        <div className="absolute -top-10 right-[20%] z-20 hidden h-[450px] w-[320px] translate-x-1/3 md:block lg:right-[15%] xl:right-[24%]">
+          <Image
+            src="/image (2).webp"
+            fill
+            className="object-contain"
+            alt="criança brincando"
+          />
+        </div>
       </div>
     </div>
   )

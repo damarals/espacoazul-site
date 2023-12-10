@@ -30,6 +30,19 @@ export default {
         blue: {
           DEFAULT: 'var(--blue)',
           dark: 'var(--blue-dark)',
+          light: 'var(--blue-light)',
+          lighter: 'var(--blue-lighter)',
+        },
+        dark: {
+          DEFAULT: 'var(--dark)',
+        },
+        white: {
+          DEFAULT: 'var(--white)',
+          bis: 'var(--white-bis)',
+        },
+        grey: {
+          light: 'var(--grey-light)',
+          lighter: 'var(--grey-lighter)',
         },
       },
       keyframes: {

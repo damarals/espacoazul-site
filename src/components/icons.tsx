@@ -1,5 +1,6 @@
 import {
   ChevronLeft,
+  ChevronRight,
   Instagram,
   Loader2,
   LogIn,
@@ -13,6 +14,7 @@ export type Icon = LucideIcon
 
 export const Icons = {
   chevronLeft: ChevronLeft,
+  chevronRight: ChevronRight,
   spinner: Loader2,
   instagram: Instagram,
   burger: Text,

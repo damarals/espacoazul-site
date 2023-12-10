@@ -79,6 +79,7 @@ export function UserAuthForm({ className }: UserAuthFormProps) {
                   <Input
                     placeholder="Número de Registro"
                     type="number"
+                    className="text-lg"
                     {...field}
                   />
                 </FormControl>
@@ -93,16 +94,35 @@ export function UserAuthForm({ className }: UserAuthFormProps) {
               <FormItem>
                 <FormLabel className="sr-only">Senha</FormLabel>
                 <FormControl>
-                  <Input placeholder="Senha" type="password" {...field} />
+                  <Input
+                    placeholder="Senha"
+                    type="password"
+                    className="text-lg"
+                    {...field}
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
             )}
           />
         </div>
-        <button className={cn(buttonVariants())} disabled={isLoading}>
-          {isLoading && <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />}
+        <button
+          className={cn(
+            buttonVariants(),
+            'bg-blue text-lg font-medium text-white',
+          )}
+          disabled={isLoading}
+        >
+          {isLoading && (
+            <Icons.spinner
+              className="mr-1 h-5 w-5 animate-spin"
+              strokeWidth={2.4}
+            />
+          )}
           Entrar
+          {!isLoading && (
+            <Icons.chevronRight className="ml-1 h-5 w-5" strokeWidth={2.4} />
+          )}
         </button>
       </form>
     </Form>
