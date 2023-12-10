@@ -29,7 +29,7 @@ export default function LoginPage() {
               className="absolute left-1/2 top-3 flex shrink-0 -translate-x-1/2 scale-[0.6] items-center gap-2 transition-all delay-0 duration-300 ease-in-out md:top-[4.5rem] md:scale-100"
               href="/"
             >
-              <div className="relative h-10 w-10 rounded-full border border-blue-dark">
+              <div className="relative h-10 w-10 rounded-full border border-blue-dark bg-white">
                 <Image
                   src="/logo.png"
                   alt="Logo do Projeto Espaço Azul"
