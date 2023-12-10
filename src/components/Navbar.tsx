@@ -18,7 +18,7 @@ export default function Navbar({ session }: NavbarProps) {
     const nav = document.querySelector('nav')
     const logo = document.querySelector('#logo')
     const handleScroll = () => {
-      const navClasses = ['bg-blur', 'rounded-3xl']
+      const navClasses = ['bg-blur', 'md:rounded-3xl']
       const logoClasses = ['md:top-[0]', 'md:scale-[0.6]']
       console.log(window.scrollY)
       if (window.scrollY > 0) {
@@ -35,9 +35,9 @@ export default function Navbar({ session }: NavbarProps) {
   }, [])
 
   return (
-    <nav className="fixed left-0 right-0 top-0 z-40 text-base font-bold text-blue-dark transition-all md:mx-3 md:mt-2 md:py-4">
+    <nav className="fixed left-0 right-0 top-0 z-40 py-3 text-base font-bold text-blue-dark transition-all md:mx-3 md:mt-2 md:py-4">
       {/* Main Nav */}
-      <div className="relative flex h-10 w-full flex-wrap items-center justify-between md:px-6">
+      <div className="relative flex h-10 w-full flex-wrap items-center justify-between px-4 md:px-6">
         {/* Sections & Pages */}
         <div>
           <Icons.burger className="h-5 w-5 md:hidden" />
