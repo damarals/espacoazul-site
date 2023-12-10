@@ -19,7 +19,7 @@ export default function Navbar({ session }: NavbarProps) {
     const logo = document.querySelector('#logo')
     const handleScroll = () => {
       const navClasses = ['bg-blur', 'md:rounded-3xl']
-      const logoClasses = ['md:top-[0]', 'md:scale-[0.6]']
+      const logoClasses = ['md:top-[0rem]', 'md:scale-[0.6]']
       console.log(window.scrollY)
       if (window.scrollY > 0) {
         nav?.classList.add(...navClasses)
