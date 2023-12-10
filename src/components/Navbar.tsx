@@ -1,5 +1,6 @@
 'use client'
 
+import { useEffect } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import type { Session } from 'next-auth'
@@ -13,10 +14,28 @@ type NavbarProps = {
 }
 
 export default function Navbar({ session }: NavbarProps) {
+  useEffect(() => {
+    const nav = document.querySelector('nav')
+    const logo = document.querySelector('#logo')
+    const handleScroll = () => {
+      const navClasses = ['bg-blur', 'rounded-3xl']
+      const logoClasses = ['md:top-0', 'md:scale-[0.6]']
+      if (window.scrollY > 0) {
+        nav?.classList.add(...navClasses)
+        logo?.classList.add(...logoClasses)
+      } else {
+        nav?.classList.remove(...navClasses)
+        logo?.classList.remove(...logoClasses)
+      }
+    }
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
   return (
-    <nav className="fixed left-0 right-0 top-0 z-40 px-2 py-3 text-base font-bold text-blue-dark transition-all md:px-9 md:py-6">
+    <nav className="fixed left-0 right-0 top-0 z-40 text-base font-bold text-blue-dark transition-all md:mx-3 md:mt-2 md:py-4">
       {/* Main Nav */}
-      <div className="relative flex h-10 w-full flex-wrap items-center justify-between">
+      <div className="relative flex h-10 w-full flex-wrap items-center justify-between md:px-6">
         {/* Sections & Pages */}
         <div>
           <Icons.burger className="h-5 w-5 md:hidden" />
@@ -39,6 +58,7 @@ export default function Navbar({ session }: NavbarProps) {
         <Link
           className="absolute left-1/2 top-0 flex shrink-0 -translate-x-1/2 scale-[0.6] items-center gap-2 transition-all delay-0 duration-300 ease-in-out md:top-[4.5rem] md:scale-100"
           href="/"
+          id="logo"
         >
           <div className="relative h-10 w-10 rounded-full border border-blue-dark bg-white">
             <Image

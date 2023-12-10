@@ -114,3 +114,11 @@
               0 4px 8px -2px rgba(70,40,93,.035), 
               0 0 0 1px rgba(70,40,93,.025);
 }
+
+.bg-blur {
+  backdrop-filter: blur(1.5rem);
+  transition: background-color .1s ease-in-out;
+  background-color: rgba(245, 246, 250, 0.7)!important;
+  transition-duration: .2s;
+  box-shadow: 0 1em 3rem rgba(14, 21, 35, 0.1);
+}
