@@ -28,19 +28,6 @@ export const env = createEnv({
       // VERCEL_URL doesn't include `https` so it cant be validated as a URL
       process.env.VERCEL ? z.string() : z.string().url(),
     ),
-    NEXTAUTH_EMAIL_SERVER: z
-      .string()
-      .url()
-      .refine(
-        (str) => !str.includes('YOUR_EMAIL_SERVER_HERE'),
-        'You forgot to change the default email server',
-      ),
-    NEXTAUTH_EMAIL_FROM: z
-      .string()
-      .refine(
-        (str) => !str.includes('YOUR_EMAIL_FROM_HERE'),
-        'You forgot to change the default email from',
-      ),
   },
 
   /**
@@ -72,8 +59,6 @@ export const env = createEnv({
     NODE_ENV: process.env.NODE_ENV,
     NEXTAUTH_SECRET: process.env.NEXTAUTH_SECRET,
     NEXTAUTH_URL: process.env.NEXTAUTH_URL,
-    NEXTAUTH_EMAIL_SERVER: process.env.NEXTAUTH_EMAIL_SERVER,
-    NEXTAUTH_EMAIL_FROM: process.env.NEXTAUTH_EMAIL_FROM,
     NEXT_PUBLIC_SANITY_PROJECT_ID: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
     NEXT_PUBLIC_SANITY_DATASET: process.env.NEXT_PUBLIC_SANITY_DATASET,
   },
