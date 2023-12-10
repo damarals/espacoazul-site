@@ -14,9 +14,9 @@ type NavbarProps = {
 
 export default function Navbar({ session }: NavbarProps) {
   return (
-    <nav className="relative z-20 px-2 py-3 text-base font-bold text-blue-dark transition-all md:px-9 md:py-6">
+    <nav className="fixed left-0 right-0 top-0 z-40 px-2 py-3 text-base font-bold text-blue-dark transition-all md:px-9 md:py-6">
       {/* Main Nav */}
-      <div className="flex h-10 w-full flex-wrap items-center justify-between">
+      <div className="relative flex h-10 w-full flex-wrap items-center justify-between">
         {/* Sections & Pages */}
         <div>
           <Icons.burger className="h-5 w-5 md:hidden" />

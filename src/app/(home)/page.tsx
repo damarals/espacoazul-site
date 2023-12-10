@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button'
 
 function Hero() {
   return (
-    <div className="z-20 mt-10 flex flex-1 flex-col items-center gap-7 px-6 text-center sm:px-12 md:mt-14 md:gap-14">
+    <div className="z-20 mt-[100px] flex flex-1 flex-col items-center gap-7 px-6 text-center sm:px-12 md:mt-[190px] md:gap-14">
       <div className="flex max-w-lg flex-col items-center gap-4 text-primary-dark md:max-w-3xl">
         <h1 className="text-center font-serif text-5xl font-extrabold transition-all md:text-7xl">
           Lorem Ipsum is simply dummy text of the printing.
