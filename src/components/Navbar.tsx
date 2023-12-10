@@ -19,7 +19,8 @@ export default function Navbar({ session }: NavbarProps) {
     const logo = document.querySelector('#logo')
     const handleScroll = () => {
       const navClasses = ['bg-blur', 'rounded-3xl']
-      const logoClasses = ['md:top-0', 'md:scale-[0.6]']
+      const logoClasses = ['md:top-[0]', 'md:scale-[0.6]']
+      console.log(window.scrollY)
       if (window.scrollY > 0) {
         nav?.classList.add(...navClasses)
         logo?.classList.add(...logoClasses)
@@ -28,6 +29,7 @@ export default function Navbar({ session }: NavbarProps) {
         logo?.classList.remove(...logoClasses)
       }
     }
+    setTimeout(() => handleScroll(), 50) // fire once on load
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
