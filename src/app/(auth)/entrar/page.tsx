@@ -15,14 +15,14 @@ export default function LoginPage() {
     <div className="relative flex h-screen w-screen">
       <Link
         href="/"
-        className="bg-white/70 absolute left-4 top-4 flex items-center font-medium text-primary-dark md:left-8 md:top-8"
+        className="bg-white/70 absolute left-4 top-5 flex items-center font-medium text-primary-dark md:left-8 md:top-8"
       >
         <>
           <Icons.chevronLeft className="mr-1 h-4 w-4" />
           Voltar
         </>
       </Link>
-      <div className="flex w-full items-center justify-center bg-[#eff8ff]">
+      <div className="flex w-full items-center justify-center bg-[#eff8ff] p-6">
         <div className="box-shadow flex flex-col justify-center space-y-6 rounded-3xl bg-white p-8 sm:w-[500px]">
           <div className="flex flex-col space-y-2 text-center text-dark">
             <Link
@@ -46,9 +46,7 @@ export default function LoginPage() {
               Bem-vindo de volta
             </h1>
             <p className="text-xl">
-              Entre com seu número de registro e senha
-              <br />
-              para entrar na sua conta
+              Entre com seu número de registro e senha para entrar na sua conta
             </p>
           </div>
           <UserAuthForm />
