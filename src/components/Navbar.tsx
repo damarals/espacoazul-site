@@ -14,19 +14,23 @@ type NavbarProps = {
 }
 
 export default function Navbar({ session }: NavbarProps) {
+  // 1. Blur & round nav on scroll
+  // 2. Scale & translate logo on scroll
   useEffect(() => {
     const nav = document.querySelector('nav')
     const logo = document.querySelector('#logo')
     const handleScroll = () => {
       const navClasses = ['bg-blur', 'md:rounded-3xl']
-      const logoClasses = ['md:top-[0rem]', 'md:scale-[0.6]']
-      console.log(window.scrollY)
+      const onTopLogoClasses = ['md:top-[4.5rem]', 'md:scale-100']
+      const onScrollLogoClasses = ['md:top-0', 'md:scale-[0.6]']
       if (window.scrollY > 0) {
         nav?.classList.add(...navClasses)
-        logo?.classList.add(...logoClasses)
+        logo?.classList.add(...onScrollLogoClasses)
+        logo?.classList.remove(...onTopLogoClasses)
       } else {
         nav?.classList.remove(...navClasses)
-        logo?.classList.remove(...logoClasses)
+        logo?.classList.add(...onTopLogoClasses)
+        logo?.classList.remove(...onScrollLogoClasses)
       }
     }
     setTimeout(() => handleScroll(), 50) // fire once on load
