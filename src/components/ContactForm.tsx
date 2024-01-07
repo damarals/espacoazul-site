@@ -68,22 +68,6 @@ export default function ContactForm() {
               type="tel"
             />
           </div>
-          <div className="flex items-center gap-4">
-            <div className="flex items-center gap-1.5">
-              <Checkbox
-                id="whatsapp-checkbox"
-                className="h-4 w-4 border-black text-white data-[state=checked]:bg-blue"
-              />
-              <Label htmlFor="whatsapp-checkbox" className="whitespace-nowrap">
-                Contato via WhatsApp
-              </Label>
-            </div>
-            <Input
-              id="whatsapp"
-              placeholder="Digite seu número do WhatsApp"
-              type="tel"
-            />
-          </div>
         </div>
         <div className="space-y-2">
           <Select>
