@@ -84,7 +84,7 @@ export default function ContactForm() {
         <div className="flex flex-1 flex-col space-y-2">
           <Label htmlFor="message">Sua Pergunta</Label>
           <Textarea
-            className="max-h-[300px] min-h-[100px] flex-1"
+            className="max-h-[300px] min-h-[60px] flex-1"
             id="message"
             placeholder="Digite sua pergunta"
           />
