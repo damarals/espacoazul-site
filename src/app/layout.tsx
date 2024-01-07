@@ -35,7 +35,11 @@ export default async function RootLayout({
   return (
     <html
       lang="pt-br"
-      className={cn('font-sans', figtree.variable, petrona.variable)}
+      className={cn(
+        'scroll-smooth font-sans',
+        figtree.variable,
+        petrona.variable,
+      )}
     >
       <body className="bg-[#eff8ff]">
         <TRPCReactProvider cookies={cookies().toString()}>

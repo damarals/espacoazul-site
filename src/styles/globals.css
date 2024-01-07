@@ -122,3 +122,22 @@
   transition-duration: .2s;
   box-shadow: 0 1em 3rem rgba(14, 21, 35, 0.1);
 }
+
+.swiper {
+  overflow-y: visible !important;
+  padding-bottom: 2.5rem !important;
+}
+
+.swiper-slide {
+  width: auto !important;
+}
+
+.swiper-pagination-bullet {
+  height: 0.7rem!important;
+  width: 0.7rem!important;
+  background-color: var(--grey-dark)!important;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: var(--blue)!important;
+}

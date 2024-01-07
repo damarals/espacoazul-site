@@ -46,25 +46,36 @@ declare module 'next-auth' {
 export const authOptions: NextAuthOptions = {
   adapter: PrismaAdapter(db),
   callbacks: {
-    async jwt({ token, user }) {
-      if (user) {
-        token.id = user.id
-        token.usercode = user.usercode
-        token.name = user.fullName
-        token.shortName = user.shortName
-        token.role = user.role
-        token.email = user.email
-      }
+    async jwt({ token }) {
+      if (!token.sub) return token
+
+      const user = await db.user.findUnique({
+        where: { id: token.sub },
+        include: { role: true },
+      })
+
+      if (!user) return token
+
+      token.usercode = user.usercode
+      token.name = user.fullName
+      token.shortName = user.shortName
+      token.email = user.email
+      token.image = user.image
+      token.role = user.role?.role as UserRole
+
       return token
     },
-    // session is a subset of JWT token
     session({ session, token }) {
-      session.user.id = token.id as string
-      session.user.usercode = token.usercode as number
-      session.user.name = token.name as string
-      session.user.shortName = token.shortName as string
-      session.user.role = token.role as UserRole
-      session.user.email = token.email as string
+      if (session.user) {
+        session.user.usercode = token.usercode as number
+        session.user.name = token.name
+        session.user.shortName = token.shortName as string
+        session.user.email = token.email
+        session.user.image = token.image as string
+        if (token.sub) session.user.id = token.sub
+        if (token.role) session.user.role = token.role as UserRole
+      }
+
       return session
     },
   },

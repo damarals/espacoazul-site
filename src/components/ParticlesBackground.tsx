@@ -55,7 +55,7 @@ export default function ParticlesBackground() {
             maxSpeed: 50,
             mode: 'bounce',
             overlap: {
-              enable: false,
+              enable: true,
               retries: 0,
             },
           },
@@ -224,7 +224,7 @@ export default function ParticlesBackground() {
         },
         zLayers: 100,
       }}
-      className="absolute z-10 h-full w-full"
+      className="absolute h-full w-full"
     />
   )
 }

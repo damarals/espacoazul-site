@@ -4,7 +4,7 @@ import { Icons } from '@/components/icons'
 
 export default function Footer() {
   return (
-    <footer className="flex h-16 w-full items-center justify-between px-14 text-blue-dark">
+    <footer className="flex h-16 w-full items-center justify-between px-8 text-blue-dark md:px-8">
       <span className="text-sm font-medium">
         &copy;2023 - Projeto Espaço Azul
       </span>

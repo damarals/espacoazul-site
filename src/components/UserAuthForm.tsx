@@ -80,6 +80,7 @@ export function UserAuthForm({ className }: UserAuthFormProps) {
                     placeholder="Número de Registro"
                     type="number"
                     className="text-lg"
+                    disabled={isLoading}
                     {...field}
                   />
                 </FormControl>
@@ -98,6 +99,7 @@ export function UserAuthForm({ className }: UserAuthFormProps) {
                     placeholder="Senha"
                     type="password"
                     className="text-lg"
+                    disabled={isLoading}
                     {...field}
                   />
                 </FormControl>
@@ -113,15 +115,19 @@ export function UserAuthForm({ className }: UserAuthFormProps) {
           )}
           disabled={isLoading}
         >
-          {isLoading && (
-            <Icons.spinner
-              className="mr-1 h-5 w-5 animate-spin"
-              strokeWidth={2.4}
-            />
-          )}
-          Entrar
-          {!isLoading && (
-            <Icons.chevronRight className="ml-1 h-5 w-5" strokeWidth={2.4} />
+          {isLoading ? (
+            <>
+              <Icons.spinner
+                className="mr-1 h-5 w-5 animate-spin"
+                strokeWidth={2.4}
+              />
+              Autenticando...
+            </>
+          ) : (
+            <>
+              Entrar
+              <Icons.chevronRight className="ml-1 h-5 w-5" strokeWidth={2.4} />
+            </>
           )}
         </button>
       </form>
