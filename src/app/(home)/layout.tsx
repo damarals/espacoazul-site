@@ -46,14 +46,13 @@ export default async function MainLayout({ children }: MainLayoutProps) {
           </div>
           {/* Posts & News */}
           <div className="flex h-screen flex-col items-center gap-10 pb-12 pt-24">
-            <h1 className="max-w-4xl text-center font-serif text-5xl font-semibold text-primary-dark">
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry
+            <h1 className="max-w-4xl px-4 text-center font-serif text-5xl font-semibold text-primary-dark">
+              Notícias e Novidades
             </h1>
-            <h2 className="max-w-4xl text-center font-serif text-3xl font-semibold text-primary-dark">
-              Contrary to popular belief, Lorem Ipsum is not simply random text.
-              It has roots in a piece of classical Latin literature from 45 BC.
-            </h2>
+            <p className="max-w-4xl px-4 text-center text-lg font-normal text-primary-dark">
+              Fique por dentro das últimas novidades, eventos e informações
+              importantes
+            </p>
             <PostGallery />
           </div>
           {/* Donate */}

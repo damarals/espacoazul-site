@@ -60,8 +60,8 @@ export function PostGallery() {
             className="basis-3/4 data-[isfirst=true]:md:ml-24 lg:basis-2/4 xl:basis-1/3 2xl:basis-1/4"
             data-isfirst={index === 0}
           >
-            <div className="mx-1 h-full flex-col items-center gap-4 overflow-hidden rounded-xl pb-2 shadow-lg">
-              <div className="relative h-3/5 w-full">
+            <div className="mx-1 flex h-full flex-col items-center gap-4 overflow-hidden rounded-xl pb-2 shadow-lg">
+              <div className="relative min-h-[40%] w-full flex-1">
                 <Image
                   src="/kids.jpg"
                   alt=""
@@ -69,7 +69,7 @@ export function PostGallery() {
                   style={{ objectFit: 'cover' }}
                 />
               </div>
-              <div className="flex flex-col gap-3 p-8 pt-3">
+              <div className="flex flex-col gap-3 p-8 pt-2">
                 <span className="text-center text-2xl font-semibold text-blue-dark">
                   Título da notícia
                 </span>
