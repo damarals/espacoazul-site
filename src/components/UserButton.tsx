@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link'
 import { signOut } from 'next-auth/react'
 
 import {
@@ -8,6 +9,7 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from '@/components/ui/navigation-menu'
+import { Separator } from '@/components/ui/separator'
 
 export default function UserButton({ name }: { name: string }) {
   return (
@@ -27,6 +29,16 @@ export default function UserButton({ name }: { name: string }) {
           </NavigationMenuTrigger>
           <NavigationMenuContent>
             <div className="flex flex-col gap-2 bg-white p-2">
+              <button className="w-[100px] text-left text-sm font-medium">
+                Minha Conta
+              </button>
+              <Separator className="bg-gray-200" />
+              <Link
+                className="w-[100px] text-left text-sm font-medium"
+                href="/admin"
+              >
+                Administração
+              </Link>
               <button
                 className="w-[100px] text-left text-sm font-medium"
                 onClick={() => signOut()}

@@ -27,8 +27,29 @@ const createAdminUser = prisma.user.create({
   },
 })
 
+const userSalt = bcrypt.genSaltSync(10)
+const createUsers = [
+  prisma.user.create({
+    data: {
+      usercode: 10002,
+      fullName: 'Rute Silva',
+      shortName: 'Rute',
+      email: 'rute@mail.com',
+      image: '/avatar.svg',
+      password: bcrypt.hashSync('RUTE@projeto2023', userSalt),
+      salt: userSalt,
+      role: {
+        connect: {
+          role: UserRole.STAFF,
+        },
+      },
+    },
+  }),
+]
+
 async function seedUsersTables() {
-  await prisma.$transaction([...createRoles, createAdminUser])
+  // await prisma.$transaction([...createRoles, createAdminUser, ...createUsers])
+  await prisma.$transaction([...createUsers])
 }
 
 async function nuke() {
@@ -45,7 +66,7 @@ async function seed() {
 }
 
 async function main() {
-  await nuke()
+  // await nuke()
   await seed()
 }
 
