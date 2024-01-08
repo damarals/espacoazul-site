@@ -69,8 +69,8 @@ export function PostGallery() {
                   style={{ objectFit: 'cover' }}
                 />
               </div>
-              <div className="flex flex-col gap-3 p-8 pt-2">
-                <span className="text-center text-2xl font-semibold text-blue-dark">
+              <div className="flex flex-col gap-3 p-8 pt-0 sm:pt-2">
+                <span className="text-center text-xl font-semibold text-blue-dark sm:text-2xl">
                   Título da notícia
                 </span>
                 <span className="line-clamp-3 text-sm">
