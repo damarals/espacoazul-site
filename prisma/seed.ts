@@ -16,7 +16,7 @@ const createAdminUser = prisma.user.create({
     fullName: 'Administrador',
     shortName: 'Admin',
     email: 'admin@gmail.com',
-    image: 'https://github.com/shadcn.png',
+    image: '/avatar.svg',
     password: bcrypt.hashSync('ADMIN@projeto2023', adminSalt),
     salt: adminSalt,
     role: {
@@ -40,7 +40,39 @@ const createUsers = [
       salt: userSalt,
       role: {
         connect: {
-          role: UserRole.STAFF,
+          role: UserRole.ADMIN,
+        },
+      },
+    },
+  }),
+  prisma.user.create({
+    data: {
+      usercode: 10003,
+      fullName: 'John Doe',
+      shortName: 'John',
+      email: 'johndoe@mail.com',
+      image: '/avatar.svg',
+      password: bcrypt.hashSync('JOHN@projeto2023', userSalt),
+      salt: userSalt,
+      role: {
+        connect: {
+          role: UserRole.PROFESSIONAL,
+        },
+      },
+    },
+  }),
+  prisma.user.create({
+    data: {
+      usercode: 10004,
+      fullName: 'Jane Doe',
+      shortName: 'Jane',
+      email: 'jane@mail.com',
+      image: '/avatar.svg',
+      password: bcrypt.hashSync('JANE@projeto2023', userSalt),
+      salt: userSalt,
+      role: {
+        connect: {
+          role: UserRole.PATIENT,
         },
       },
     },
@@ -48,8 +80,7 @@ const createUsers = [
 ]
 
 async function seedUsersTables() {
-  // await prisma.$transaction([...createRoles, createAdminUser, ...createUsers])
-  await prisma.$transaction([...createUsers])
+  await prisma.$transaction([...createRoles, createAdminUser, ...createUsers])
 }
 
 async function nuke() {
@@ -66,7 +97,7 @@ async function seed() {
 }
 
 async function main() {
-  // await nuke()
+  await nuke()
   await seed()
 }
 

@@ -47,7 +47,7 @@ export default function AdminSidebar() {
       </div>
       <Separator className="bg-gray-200" />
       <div
-        className="flex flex-1 flex-col justify-between"
+        className="flex flex-1 flex-col justify-between gap-6"
         data-collapse={isSidebarCollapsed}
       >
         {/* Menu */}
@@ -69,7 +69,10 @@ export default function AdminSidebar() {
               </p>
             </span>
             <div className="flex flex-col gap-1">
-              <button className="flex items-center gap-4 rounded-md px-3 py-2 hover:bg-blue-100 hover:text-blue-dark">
+              <Link
+                href="/admin/pacientes?acao=novo"
+                className="flex items-center gap-4 rounded-md px-3 py-2 hover:bg-blue-100 hover:text-blue-dark"
+              >
                 <div
                   className="flex w-6 justify-center transition-all duration-200 data-[collapse=true]:w-8"
                   data-collapse={isSidebarCollapsed}
@@ -82,8 +85,11 @@ export default function AdminSidebar() {
                 >
                   Novo Paciente
                 </span>
-              </button>
-              <button className="flex items-center gap-4 rounded-md px-3 py-2 hover:bg-blue-100 hover:text-blue-dark">
+              </Link>
+              <Link
+                href="/admin/pacientes"
+                className="flex items-center gap-4 rounded-md px-3 py-2 hover:bg-blue-100 hover:text-blue-dark"
+              >
                 <div
                   className="flex w-6 justify-center transition-all duration-200 data-[collapse=true]:w-8"
                   data-collapse={isSidebarCollapsed}
@@ -96,7 +102,7 @@ export default function AdminSidebar() {
                 >
                   Ver Pacientes
                 </span>
-              </button>
+              </Link>
             </div>
           </div>
           {/* Appointments Group */}
@@ -116,7 +122,10 @@ export default function AdminSidebar() {
               </p>
             </span>
             <div className="flex flex-col gap-1">
-              <button className="flex items-center gap-4 rounded-md px-3 py-2 hover:bg-blue-100 hover:text-blue-dark">
+              <Link
+                href="/admin/consultas?acao=novo"
+                className="flex items-center gap-4 rounded-md px-3 py-2 hover:bg-blue-100 hover:text-blue-dark"
+              >
                 <div
                   className="flex w-6 justify-center transition-all duration-200 data-[collapse=true]:w-8"
                   data-collapse={isSidebarCollapsed}
@@ -129,8 +138,11 @@ export default function AdminSidebar() {
                 >
                   Nova Consulta
                 </span>
-              </button>
-              <button className="flex items-center gap-4 rounded-md px-3 py-2 hover:bg-blue-100 hover:text-blue-dark">
+              </Link>
+              <Link
+                href="/admin/consultas"
+                className="flex items-center gap-4 rounded-md px-3 py-2 hover:bg-blue-100 hover:text-blue-dark"
+              >
                 <div
                   className="flex w-6 justify-center transition-all duration-200 data-[collapse=true]:w-8"
                   data-collapse={isSidebarCollapsed}
@@ -143,54 +155,7 @@ export default function AdminSidebar() {
                 >
                   Ver Consultas
                 </span>
-              </button>
-            </div>
-          </div>
-          {/* Professionals Group */}
-          <div className="flex flex-col gap-2 px-3">
-            <span className="justify-start px-3 text-sm font-medium uppercase text-gray-700">
-              <p
-                className="data-[hidden=true]:hidden"
-                data-hidden={isSidebarCollapsed}
-              >
-                Profissionais
-              </p>
-              <p
-                className="data-[hidden=true]:hidden"
-                data-hidden={!isSidebarCollapsed}
-              >
-                Pro
-              </p>
-            </span>
-            <div className="flex flex-col gap-1">
-              <button className="flex items-center gap-4 rounded-md px-3 py-2 hover:bg-blue-100 hover:text-blue-dark">
-                <div
-                  className="flex w-6 justify-center transition-all duration-200 data-[collapse=true]:w-8"
-                  data-collapse={isSidebarCollapsed}
-                >
-                  <Icons.doctor className="h-6 w-6" />
-                </div>
-                <span
-                  className="block whitespace-nowrap data-[hidden=true]:hidden"
-                  data-hidden={isSidebarCollapsed}
-                >
-                  Novo Profissional
-                </span>
-              </button>
-              <button className="flex items-center gap-4 rounded-md px-3 py-2 hover:bg-blue-100 hover:text-blue-dark">
-                <div
-                  className="flex w-6 justify-center transition-all duration-200 data-[collapse=true]:w-8"
-                  data-collapse={isSidebarCollapsed}
-                >
-                  <Icons.medical className="h-6 w-6" />
-                </div>
-                <span
-                  className="block whitespace-nowrap data-[hidden=true]:hidden"
-                  data-hidden={isSidebarCollapsed}
-                >
-                  Ver Profissionais
-                </span>
-              </button>
+              </Link>
             </div>
           </div>
           {/* Payments Group */}
@@ -210,7 +175,10 @@ export default function AdminSidebar() {
               </p>
             </span>
             <div className="flex flex-col gap-1">
-              <button className="flex items-center gap-4 rounded-md px-3 py-2 hover:bg-blue-100 hover:text-blue-dark">
+              <Link
+                href="/admin/pagamentos?acao=novo"
+                className="flex items-center gap-4 rounded-md px-3 py-2 hover:bg-blue-100 hover:text-blue-dark"
+              >
                 <div
                   className="flex w-6 justify-center transition-all duration-200 data-[collapse=true]:w-8"
                   data-collapse={isSidebarCollapsed}
@@ -223,8 +191,11 @@ export default function AdminSidebar() {
                 >
                   Novo Pagamento
                 </span>
-              </button>
-              <button className="flex items-center gap-4 rounded-md px-3 py-2 hover:bg-blue-100 hover:text-blue-dark">
+              </Link>
+              <Link
+                href="/admin/pagamentos"
+                className="flex items-center gap-4 rounded-md px-3 py-2 hover:bg-blue-100 hover:text-blue-dark"
+              >
                 <div
                   className="flex w-6 justify-center transition-all duration-200 data-[collapse=true]:w-8"
                   data-collapse={isSidebarCollapsed}
@@ -237,7 +208,60 @@ export default function AdminSidebar() {
                 >
                   Ver Pagamentos
                 </span>
-              </button>
+              </Link>
+            </div>
+          </div>
+          {/* Professionals Group */}
+          <div className="flex flex-col gap-2 px-3">
+            <span className="justify-start px-3 text-sm font-medium uppercase text-gray-700">
+              <p
+                className="data-[hidden=true]:hidden"
+                data-hidden={isSidebarCollapsed}
+              >
+                Profissionais
+              </p>
+              <p
+                className="data-[hidden=true]:hidden"
+                data-hidden={!isSidebarCollapsed}
+              >
+                Pro
+              </p>
+            </span>
+            <div className="flex flex-col gap-1">
+              <Link
+                href="/admin/profissionais?acao=novo"
+                className="flex items-center gap-4 rounded-md px-3 py-2 hover:bg-blue-100 hover:text-blue-dark"
+              >
+                <div
+                  className="flex w-6 justify-center transition-all duration-200 data-[collapse=true]:w-8"
+                  data-collapse={isSidebarCollapsed}
+                >
+                  <Icons.doctor className="h-6 w-6" />
+                </div>
+                <span
+                  className="block whitespace-nowrap data-[hidden=true]:hidden"
+                  data-hidden={isSidebarCollapsed}
+                >
+                  Novo Profissional
+                </span>
+              </Link>
+              <Link
+                href="/admin/profissionais"
+                className="flex items-center gap-4 rounded-md px-3 py-2 hover:bg-blue-100 hover:text-blue-dark"
+              >
+                <div
+                  className="flex w-6 justify-center transition-all duration-200 data-[collapse=true]:w-8"
+                  data-collapse={isSidebarCollapsed}
+                >
+                  <Icons.medical className="h-6 w-6" />
+                </div>
+                <span
+                  className="block whitespace-nowrap data-[hidden=true]:hidden"
+                  data-hidden={isSidebarCollapsed}
+                >
+                  Ver Profissionais
+                </span>
+              </Link>
             </div>
           </div>
           {/* Admin Group */}
@@ -257,7 +281,10 @@ export default function AdminSidebar() {
               </p>
             </span>
             <div className="flex flex-col gap-1">
-              <button className="flex items-center gap-4 rounded-md px-3 py-2 hover:bg-blue-100 hover:text-blue-dark">
+              <Link
+                href="/admin/administradores?acao=novo"
+                className="flex items-center gap-4 rounded-md px-3 py-2 hover:bg-blue-100 hover:text-blue-dark"
+              >
                 <div
                   className="flex w-6 justify-center transition-all duration-200 data-[collapse=true]:w-8"
                   data-collapse={isSidebarCollapsed}
@@ -270,8 +297,11 @@ export default function AdminSidebar() {
                 >
                   Novo Usuário
                 </span>
-              </button>
-              <button className="flex items-center gap-4 rounded-md px-3 py-2 hover:bg-blue-100 hover:text-blue-dark">
+              </Link>
+              <Link
+                href="/admin/administradores"
+                className="flex items-center gap-4 rounded-md px-3 py-2 hover:bg-blue-100 hover:text-blue-dark"
+              >
                 <div
                   className="flex w-6 justify-center transition-all duration-200 data-[collapse=true]:w-8"
                   data-collapse={isSidebarCollapsed}
@@ -284,7 +314,7 @@ export default function AdminSidebar() {
                 >
                   Ver Usuários
                 </span>
-              </button>
+              </Link>
             </div>
           </div>
         </div>
