@@ -295,7 +295,7 @@ export default function AdminSidebar() {
                   className="block whitespace-nowrap data-[hidden=true]:hidden"
                   data-hidden={isSidebarCollapsed}
                 >
-                  Novo Usuário
+                  Novo Administrador
                 </span>
               </Link>
               <Link
@@ -312,7 +312,7 @@ export default function AdminSidebar() {
                   className="block whitespace-nowrap data-[hidden=true]:hidden"
                   data-hidden={isSidebarCollapsed}
                 >
-                  Ver Usuários
+                  Ver Administradores
                 </span>
               </Link>
             </div>
