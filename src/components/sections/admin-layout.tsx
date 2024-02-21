@@ -9,11 +9,7 @@ import { Icons } from '@/components/icons'
 import { Button } from '@/components/ui/button'
 import {
   Drawer,
-  DrawerClose,
   DrawerContent,
-  DrawerDescription,
-  DrawerFooter,
-  DrawerHeader,
   DrawerTitle,
   DrawerTrigger,
 } from '@/components/ui/drawer'
@@ -53,20 +49,23 @@ export default function AdminLayoutClient({
               </Button>
             </DrawerTrigger>
             <DrawerContent className="top-[58px] mt-0">
-              <div className="flex flex-col items-center justify-center gap-4 bg-white px-6 py-8">
-                <Button className="w-fit rounded-xl px-12 text-base font-bold text-white">
+              <div className="flex flex-col items-center justify-center gap-4 bg-gray-50 p-6 pt-3">
+                <DrawerTitle className="text-xl text-blue-dark">
+                  Administração
+                </DrawerTitle>
+                <Button className="w-fit rounded-xl bg-blue-dark px-12 text-base font-bold text-white">
                   Pacientes
                 </Button>
-                <Button className="w-fit rounded-xl px-12 text-base font-bold text-white">
+                <Button className="w-fit rounded-xl bg-blue-dark px-12 text-base font-bold text-white">
                   Consultas
                 </Button>
-                <Button className="w-fit rounded-xl px-12 text-base font-bold text-white">
+                <Button className="w-fit rounded-xl bg-blue-dark px-12 text-base font-bold text-white">
                   Pagamentos
                 </Button>
-                <Button className="w-fit rounded-xl px-12 text-base font-bold text-white">
+                <Button className="w-fit rounded-xl bg-blue-dark px-12 text-base font-bold text-white">
                   Profissionais
                 </Button>
-                <Button className="w-fit rounded-xl px-12 text-base font-bold text-white">
+                <Button className="w-fit rounded-xl bg-blue-dark px-12 text-base font-bold text-white">
                   Administradores
                 </Button>
               </div>
