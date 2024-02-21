@@ -13,6 +13,7 @@ model Appointment {
     updatedAt DateTime @updatedAt
     date      DateTime
     duration  Int
+    category  String
     notes     String?
     status    String
 

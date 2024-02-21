@@ -34,7 +34,7 @@ export function DataTableToolbar<TData>({
         onChange={(event) =>
           table.getColumn('fullName')?.setFilterValue(event.target.value)
         }
-        className="h-8 w-[150px] lg:w-[250px]"
+        className="h-10 w-[300px] lg:w-[500px]"
       />
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogTrigger asChild>

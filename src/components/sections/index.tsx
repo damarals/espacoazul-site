@@ -1,0 +1,6 @@
+export { Hero } from './hero'
+export { OurKids } from './our-kids'
+export { PostAndNews } from './posts-and-news'
+export { default as Donate } from './donate'
+export { default as Location } from './location'
+export { Contact } from './contact'

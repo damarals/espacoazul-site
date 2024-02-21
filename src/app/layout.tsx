@@ -1,6 +1,6 @@
 import '@/styles/globals.css'
 
-import { ReactNode } from 'react'
+import { PropsWithChildren } from 'react'
 import { Figtree, Petrona } from 'next/font/google'
 import { cookies } from 'next/headers'
 import { TRPCReactProvider } from '@/trpc/react'
@@ -27,11 +27,7 @@ export const metadata = {
   icons: [{ rel: 'icon', url: '/favicon.ico' }],
 }
 
-export default async function RootLayout({
-  children,
-}: {
-  children: ReactNode
-}) {
+export default async function RootLayout({ children }: PropsWithChildren) {
   return (
     <html
       lang="pt-br"

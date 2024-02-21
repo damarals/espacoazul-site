@@ -26,7 +26,7 @@ type UserAuthFormProps = HTMLAttributes<HTMLDivElement>
 
 type FormData = z.infer<typeof userAuthSchema>
 
-export function UserAuthForm({ className }: UserAuthFormProps) {
+export default function UserAuthForm({ className }: UserAuthFormProps) {
   const router = useRouter()
   const loginForm = useForm<FormData>({
     resolver: zodResolver(userAuthSchema),

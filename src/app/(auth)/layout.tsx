@@ -1,9 +1,5 @@
-import { ReactNode } from 'react'
+import { PropsWithChildren } from 'react'
 
-interface AuthLayoutProps {
-  children: ReactNode
-}
-
-export default function AuthLayout({ children }: AuthLayoutProps) {
+export default function AuthLayout({ children }: PropsWithChildren) {
   return <div className="min-h-screen">{children}</div>
 }

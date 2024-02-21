@@ -22,6 +22,7 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table'
+import { useTablePageSizeResponsive } from './data-table-hooks'
 
 interface DataTableProps<TData, TValue> {
   data: TData[]
@@ -52,11 +53,6 @@ export default function DataTable<TData, TValue>({
       rowSelection,
       columnFilters,
     },
-    initialState: {
-      pagination: {
-        pageSize: 8,
-      },
-    },
     enableRowSelection: true,
     onRowSelectionChange: setRowSelection,
     onSortingChange: setSorting,
@@ -68,6 +64,10 @@ export default function DataTable<TData, TValue>({
     getSortedRowModel: getSortedRowModel(),
     getFacetedRowModel: getFacetedRowModel(),
     getFacetedUniqueValues: getFacetedUniqueValues(),
+  })
+
+  useTablePageSizeResponsive({
+    setPageSize: table.setPageSize,
   })
 
   return (
@@ -116,7 +116,7 @@ export default function DataTable<TData, TValue>({
                   colSpan={columns.length}
                   className="h-24 text-center"
                 >
-                  No results.
+                  Nenhum registro encontrado.
                 </TableCell>
               </TableRow>
             )}

@@ -20,6 +20,7 @@ export const Icons = {
   chevronLeft: PopiconsChevronLeftLine,
   chevronRight: PopiconsChevronRightLine,
   circleXSolid: PopiconsCircleXSolid,
+  menu: PopiconsBarsLeftLine,
   sidebarArrowCollapse: PopiconsSidebarArrowCollapseLine,
   sidebarArrowExpand: PopiconsSidebarArrowExpandLine,
   spinner: ({ ...props }: SVGProps<SVGSVGElement>) => (

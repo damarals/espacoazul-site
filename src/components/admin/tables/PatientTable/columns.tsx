@@ -16,7 +16,11 @@ export const columns: ColumnDef<Patient>[] = [
   {
     accessorKey: 'usercode',
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Registro" />
+      <DataTableColumnHeader
+        className="w-[80px]"
+        column={column}
+        title="Registro"
+      />
     ),
     cell: ({ row }) => (
       <div className="w-[80px]">{row.getValue('usercode')}</div>
@@ -27,10 +31,14 @@ export const columns: ColumnDef<Patient>[] = [
   {
     accessorKey: 'fullName',
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Nome" />
+      <DataTableColumnHeader
+        className="w-[200px]"
+        column={column}
+        title="Nome"
+      />
     ),
     cell: ({ row }) => (
-      <div className="max-w-[200px]">{row.getValue('fullName')}</div>
+      <div className="w-[200px]">{row.getValue('fullName')}</div>
     ),
     enableSorting: true,
     enableHiding: false,
@@ -38,18 +46,24 @@ export const columns: ColumnDef<Patient>[] = [
   {
     accessorKey: 'email',
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="E-mail" />
+      <DataTableColumnHeader
+        className="w-[200px]"
+        column={column}
+        title="E-mail"
+      />
     ),
-    cell: ({ row }) => (
-      <div className="max-w-[200px]">{row.getValue('email')}</div>
-    ),
+    cell: ({ row }) => <div className="w-[200px]">{row.getValue('email')}</div>,
     enableSorting: false,
     enableHiding: false,
   },
   {
     accessorKey: 'createdAt',
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Criado em" />
+      <DataTableColumnHeader
+        className="w-[90px]"
+        column={column}
+        title="Criado em"
+      />
     ),
     cell: ({ row }) => (
       <div className="w-[90px]">
