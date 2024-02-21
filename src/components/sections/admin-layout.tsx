@@ -4,9 +4,10 @@ import { PropsWithChildren, useEffect, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 
+import { cn } from '@/lib/utils'
 import { UserButton } from '@/components/auth'
 import { Icons } from '@/components/icons'
-import { Button } from '@/components/ui/button'
+import { Button, buttonVariants } from '@/components/ui/button'
 import {
   Drawer,
   DrawerContent,
@@ -72,21 +73,42 @@ export default function AdminLayoutClient({
                 <DrawerTitle className="text-xl text-blue-dark">
                   Administração
                 </DrawerTitle>
-                <Button className="w-fit rounded-xl bg-blue-dark px-12 text-base font-bold text-white">
+                <MobileMenuLink
+                  href="/admin"
+                  onClick={() => setOpenMobileMenu(false)}
+                >
+                  Visão Geral
+                </MobileMenuLink>
+                <MobileMenuLink
+                  href="/admin/pacientes"
+                  onClick={() => setOpenMobileMenu(false)}
+                >
                   Pacientes
-                </Button>
-                <Button className="w-fit rounded-xl bg-blue-dark px-12 text-base font-bold text-white">
+                </MobileMenuLink>
+                <MobileMenuLink
+                  href="/admin/consultas"
+                  onClick={() => setOpenMobileMenu(false)}
+                >
                   Consultas
-                </Button>
-                <Button className="w-fit rounded-xl bg-blue-dark px-12 text-base font-bold text-white">
+                </MobileMenuLink>
+                <MobileMenuLink
+                  href="/admin/pagamentos"
+                  onClick={() => setOpenMobileMenu(false)}
+                >
                   Pagamentos
-                </Button>
-                <Button className="w-fit rounded-xl bg-blue-dark px-12 text-base font-bold text-white">
+                </MobileMenuLink>
+                <MobileMenuLink
+                  href="/admin/profissionais"
+                  onClick={() => setOpenMobileMenu(false)}
+                >
                   Profissionais
-                </Button>
-                <Button className="w-fit rounded-xl bg-blue-dark px-12 text-base font-bold text-white">
+                </MobileMenuLink>
+                <MobileMenuLink
+                  href="/admin/administradores"
+                  onClick={() => setOpenMobileMenu(false)}
+                >
                   Administradores
-                </Button>
+                </MobileMenuLink>
               </div>
             </DrawerContent>
           </Drawer>
@@ -136,7 +158,27 @@ export default function AdminLayoutClient({
           data-collapsed={isCollapsed}
         >
           {/* Menu */}
-          <div className="flex flex-col gap-6 py-3">
+          <div className="flex flex-col gap-6">
+            {/* Overview */}
+            <div className="flex flex-col gap-1 px-3">
+              <Link
+                href="/admin/pacientes?acao=novo"
+                className="flex items-center gap-4 rounded-md px-3 py-2 hover:bg-blue-100 hover:text-blue-dark"
+              >
+                <div
+                  className="flex w-6 justify-center data-[collapsed=true]:w-8"
+                  data-collapsed={isCollapsed}
+                >
+                  <Icons.gridSearch className="h-[22px] w-[22px]" />
+                </div>
+                <span
+                  className="whitespace-nowrap data-[hidden=true]:hidden"
+                  data-hidden={isCollapsed}
+                >
+                  Visão Geral
+                </span>
+              </Link>
+            </div>
             {/* Patients Group */}
             <div className="flex flex-col gap-2 px-3">
               <span className="justify-start px-3 text-sm font-medium uppercase text-gray-700">
@@ -162,7 +204,7 @@ export default function AdminLayoutClient({
                     className="flex w-6 justify-center data-[collapsed=true]:w-8"
                     data-collapsed={isCollapsed}
                   >
-                    <Icons.userPlus className="h-6 w-6" />
+                    <Icons.userPlus className="h-[22px] w-[22px]" />
                   </div>
                   <span
                     className="whitespace-nowrap data-[hidden=true]:hidden"
@@ -179,7 +221,7 @@ export default function AdminLayoutClient({
                     className="flex w-6 justify-center data-[collapsed=true]:w-8"
                     data-collapsed={isCollapsed}
                   >
-                    <Icons.users className="h-6 w-6" />
+                    <Icons.users className="h-[22px] w-[22px]" />
                   </div>
                   <span
                     className="whitespace-nowrap data-[hidden=true]:hidden"
@@ -215,7 +257,7 @@ export default function AdminLayoutClient({
                     className="flex w-6 justify-center data-[collapsed=true]:w-8"
                     data-collapsed={isCollapsed}
                   >
-                    <Icons.filePlus className="h-6 w-6" />
+                    <Icons.filePlus className="h-[22px] w-[22px]" />
                   </div>
                   <span
                     className="block whitespace-nowrap data-[hidden=true]:hidden"
@@ -232,7 +274,7 @@ export default function AdminLayoutClient({
                     className="flex w-6 justify-center data-[collapsed=true]:w-8"
                     data-collapsed={isCollapsed}
                   >
-                    <Icons.searchDocument className="h-6 w-6" />
+                    <Icons.searchDocument className="h-[22px] w-[22px]" />
                   </div>
                   <span
                     className="block whitespace-nowrap data-[hidden=true]:hidden"
@@ -268,7 +310,7 @@ export default function AdminLayoutClient({
                     className="flex w-6 justify-center data-[collapsed=true]:w-8"
                     data-collapsed={isCollapsed}
                   >
-                    <Icons.creditCard className="h-6 w-6" />
+                    <Icons.creditCard className="h-[22px] w-[22px]" />
                   </div>
                   <span
                     className="block whitespace-nowrap data-[hidden=true]:hidden"
@@ -285,7 +327,7 @@ export default function AdminLayoutClient({
                     className="flex w-6 justify-center data-[collapsed=true]:w-8"
                     data-collapsed={isCollapsed}
                   >
-                    <Icons.receipt className="h-6 w-6" />
+                    <Icons.receipt className="h-[22px] w-[22px]" />
                   </div>
                   <span
                     className="block whitespace-nowrap data-[hidden=true]:hidden"
@@ -321,7 +363,7 @@ export default function AdminLayoutClient({
                     className="flex w-6 justify-center data-[collapsed=true]:w-8"
                     data-collapsed={isCollapsed}
                   >
-                    <Icons.doctor className="h-6 w-6" />
+                    <Icons.doctor className="h-[22px] w-[22px]" />
                   </div>
                   <span
                     className="block whitespace-nowrap data-[hidden=true]:hidden"
@@ -338,7 +380,7 @@ export default function AdminLayoutClient({
                     className="flex w-6 justify-center data-[collapsed=true]:w-8"
                     data-collapsed={isCollapsed}
                   >
-                    <Icons.medical className="h-6 w-6" />
+                    <Icons.medical className="h-[22px] w-[22px]" />
                   </div>
                   <span
                     className="block whitespace-nowrap data-[hidden=true]:hidden"
@@ -374,7 +416,7 @@ export default function AdminLayoutClient({
                     className="flex w-6 justify-center data-[collapsed=true]:w-8"
                     data-collapsed={isCollapsed}
                   >
-                    <Icons.admin className="h-6 w-6" />
+                    <Icons.admin className="h-[22px] w-[22px]" />
                   </div>
                   <span
                     className="block whitespace-nowrap data-[hidden=true]:hidden"
@@ -391,7 +433,7 @@ export default function AdminLayoutClient({
                     className="flex w-6 justify-center data-[collapsed=true]:w-8"
                     data-collapsed={isCollapsed}
                   >
-                    <Icons.adminGroup className="h-6 w-6" />
+                    <Icons.adminGroup className="h-[22px] w-[22px]" />
                   </div>
                   <span
                     className="block whitespace-nowrap data-[hidden=true]:hidden"
@@ -410,7 +452,7 @@ export default function AdminLayoutClient({
                 className="flex w-6 justify-center data-[collapsed=true]:w-8"
                 data-collapsed={isCollapsed}
               >
-                <Icons.logout className="h-6 w-6" />
+                <Icons.logout className="h-[22px] w-[22px]" />
               </div>
               <span
                 className="block whitespace-nowrap data-[hidden=true]:hidden"
@@ -426,5 +468,24 @@ export default function AdminLayoutClient({
         </ScrollArea>
       </div>
     </div>
+  )
+}
+
+function MobileMenuLink({
+  href,
+  onClick,
+  children,
+}: PropsWithChildren & { href: string; onClick?: () => void }) {
+  return (
+    <Link
+      className={cn(
+        buttonVariants(),
+        'w-fit rounded-xl bg-blue-dark px-12 text-base font-bold text-white',
+      )}
+      href={href}
+      onClick={onClick}
+    >
+      {children}
+    </Link>
   )
 }
