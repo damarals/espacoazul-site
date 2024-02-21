@@ -27,7 +27,7 @@ export function DataTableToolbar<TData>({
 }: DataTableToolbarProps<TData>) {
   const [open, setOpen] = useState<boolean>(openInsertDialog)
   return (
-    <div className="flex items-center justify-between">
+    <div className="flex items-center justify-between gap-4">
       <Input
         placeholder="Buscar por nome..."
         value={(table.getColumn('fullName')?.getFilterValue() as string) ?? ''}

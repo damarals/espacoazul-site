@@ -78,7 +78,7 @@ export default function AdminDashboard() {
                 <CardTitle>Pacientes Ativos</CardTitle>
                 <CardDescription>Últimos 8 meses</CardDescription>
               </CardHeader>
-              <CardContent className="flex-1 pl-2">
+              <CardContent className="flex-1 pb-4 pl-2">
                 <PatientsOverview />
               </CardContent>
             </Card>
@@ -86,7 +86,7 @@ export default function AdminDashboard() {
               <CardHeader>
                 <CardTitle>Novos Pacientes</CardTitle>
               </CardHeader>
-              <CardContent>
+              <CardContent className="pb-4">
                 <RecentPatients />
               </CardContent>
             </Card>

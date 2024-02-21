@@ -32,13 +32,13 @@ export const columns: ColumnDef<Patient>[] = [
     accessorKey: 'fullName',
     header: ({ column }) => (
       <DataTableColumnHeader
-        className="w-[200px]"
+        className="w-[140px] lg:w-[200px]"
         column={column}
         title="Nome"
       />
     ),
     cell: ({ row }) => (
-      <div className="w-[200px]">{row.getValue('fullName')}</div>
+      <div className="w-[140px] lg:w-[200px]">{row.getValue('fullName')}</div>
     ),
     enableSorting: true,
     enableHiding: false,
@@ -47,12 +47,14 @@ export const columns: ColumnDef<Patient>[] = [
     accessorKey: 'email',
     header: ({ column }) => (
       <DataTableColumnHeader
-        className="w-[200px]"
+        className="hidden w-[200px] lg:block"
         column={column}
         title="E-mail"
       />
     ),
-    cell: ({ row }) => <div className="w-[200px]">{row.getValue('email')}</div>,
+    cell: ({ row }) => (
+      <div className="hidden w-[200px] lg:block">{row.getValue('email')}</div>
+    ),
     enableSorting: false,
     enableHiding: false,
   },
@@ -60,13 +62,13 @@ export const columns: ColumnDef<Patient>[] = [
     accessorKey: 'createdAt',
     header: ({ column }) => (
       <DataTableColumnHeader
-        className="w-[90px]"
+        className="hidden w-[90px] sm:block md:hidden lg:block"
         column={column}
         title="Criado em"
       />
     ),
     cell: ({ row }) => (
-      <div className="w-[90px]">
+      <div className="hidden w-[90px] sm:block md:hidden lg:block">
         {format(row.getValue('createdAt'), 'd MMM yyyy', { locale: ptBR })}
       </div>
     ),
