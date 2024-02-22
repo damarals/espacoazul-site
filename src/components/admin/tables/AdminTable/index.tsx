@@ -4,7 +4,8 @@ import { api } from '@/trpc/react'
 import { ColumnDef } from '@tanstack/react-table'
 
 import DataTable from '@/components/admin/DataTable'
-import { columns } from './columns'
+import useResponsiveColumns from '@/hooks/use-responsive-columns'
+import { columns as allColumns } from './columns'
 import { DataTablePagination } from './data-table-pagination'
 import { DataTableToolbar } from './data-table-toolbar'
 
@@ -14,6 +15,7 @@ type AdminTableProps = {
 
 export default function AdminTable({ insertData = false }: AdminTableProps) {
   const [data] = api.users.getAllAdmins.useSuspenseQuery()
+  const columns = useResponsiveColumns(allColumns)
 
   if (!data) return null
   return (

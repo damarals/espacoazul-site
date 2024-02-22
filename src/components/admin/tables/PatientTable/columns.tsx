@@ -12,66 +12,78 @@ type Patient = Awaited<
   ReturnType<typeof server.users.getAllPatients.query>
 >[number]
 
-export const columns: ColumnDef<Patient>[] = [
+type ExtendedColumnDef<TData> = ColumnDef<TData> & {
+  hiddenAt?: string[]
+}
+
+export const columns: ExtendedColumnDef<Patient>[] = [
   {
+    id: 'usercode',
     accessorKey: 'usercode',
     header: ({ column }) => (
       <DataTableColumnHeader
-        className="w-[80px]"
+        className="sm:w-[80px]"
         column={column}
         title="Registro"
       />
     ),
     cell: ({ row }) => (
-      <div className="w-[80px]">{row.getValue('usercode')}</div>
+      <div className="sm:w-[80px]">{row.getValue('usercode')}</div>
     ),
     enableSorting: true,
     enableHiding: false,
   },
   {
+    id: 'fullName',
     accessorKey: 'fullName',
     header: ({ column }) => (
       <DataTableColumnHeader
-        className="w-[140px] lg:w-[200px]"
+        className="sm:w-[140px] lg:w-[200px]"
         column={column}
         title="Nome"
       />
     ),
     cell: ({ row }) => (
-      <div className="w-[140px] lg:w-[200px]">{row.getValue('fullName')}</div>
+      <div className="sm:w-[140px] lg:w-[200px]">
+        {row.getValue('fullName')}
+      </div>
     ),
     enableSorting: true,
     enableHiding: false,
   },
   {
+    id: 'email',
     accessorKey: 'email',
     header: ({ column }) => (
       <DataTableColumnHeader
-        className="hidden w-[200px] lg:block"
+        className="w-[200px] px-0 sm:px-4"
         column={column}
         title="E-mail"
       />
     ),
     cell: ({ row }) => (
-      <div className="hidden w-[200px] lg:block">{row.getValue('email')}</div>
+      <div className="w-[200px] px-0 sm:px-4">{row.getValue('email')}</div>
     ),
+    hiddenAt: ['xs', 'sm', 'md'],
     enableSorting: false,
     enableHiding: false,
   },
   {
+    id: 'createdAt',
     accessorKey: 'createdAt',
     header: ({ column }) => (
       <DataTableColumnHeader
-        className="hidden w-[90px] sm:block md:hidden lg:block"
+        className="w-[90px]"
         column={column}
         title="Criado em"
       />
     ),
     cell: ({ row }) => (
-      <div className="hidden w-[90px] sm:block md:hidden lg:block">
+      <div className="w-[90px]">
         {format(row.getValue('createdAt'), 'd MMM yyyy', { locale: ptBR })}
       </div>
     ),
+    hiddenAt: ['xs'],
     enableSorting: false,
     enableHiding: false,
   },

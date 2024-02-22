@@ -10,8 +10,13 @@ import { DataTableRowActions } from '@/components/admin/DataTable/data-table-row
 
 type Admin = Awaited<ReturnType<typeof server.users.getAllAdmins.query>>[number]
 
-export const columns: ColumnDef<Admin>[] = [
+type ExtendedColumnDef<TData> = ColumnDef<TData> & {
+  hiddenAt?: string[]
+}
+
+export const columns: ExtendedColumnDef<Admin>[] = [
   {
+    id: 'usercode',
     accessorKey: 'usercode',
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Registro" />
@@ -23,6 +28,7 @@ export const columns: ColumnDef<Admin>[] = [
     enableHiding: false,
   },
   {
+    id: 'fullName',
     accessorKey: 'fullName',
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Nome" />
@@ -34,6 +40,7 @@ export const columns: ColumnDef<Admin>[] = [
     enableHiding: false,
   },
   {
+    id: 'email',
     accessorKey: 'email',
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="E-mail" />
@@ -41,10 +48,12 @@ export const columns: ColumnDef<Admin>[] = [
     cell: ({ row }) => (
       <div className="max-w-[200px]">{row.getValue('email')}</div>
     ),
+    hiddenAt: ['xs', 'sm', 'md'],
     enableSorting: false,
     enableHiding: false,
   },
   {
+    id: 'createdAt',
     accessorKey: 'createdAt',
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Criado em" />
@@ -54,6 +63,7 @@ export const columns: ColumnDef<Admin>[] = [
         {format(row.getValue('createdAt'), 'd MMM yyyy', { locale: ptBR })}
       </div>
     ),
+    hiddenAt: ['xs'],
     enableSorting: false,
     enableHiding: false,
   },

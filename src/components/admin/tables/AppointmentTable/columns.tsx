@@ -12,9 +12,13 @@ type Appointment = Awaited<
   ReturnType<typeof server.appointments.getAllAppointments.query>
 >[number]
 
-export const columns: ColumnDef<Appointment>[] = [
+type ExtendedColumnDef<TData> = ColumnDef<TData> & {
+  hiddenAt?: string[]
+}
+
+export const columns: ExtendedColumnDef<Appointment>[] = [
   {
-    id: 'idPatient',
+    id: 'usercode',
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Registro" />
     ),
@@ -47,6 +51,7 @@ export const columns: ColumnDef<Appointment>[] = [
     ),
     enableSorting: false,
     enableHiding: false,
+    hiddenAt: ['xs', 'sm', 'md'],
   },
   {
     accessorKey: 'date',

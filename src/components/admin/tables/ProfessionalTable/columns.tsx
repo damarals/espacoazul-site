@@ -12,8 +12,13 @@ type Professional = Awaited<
   ReturnType<typeof server.users.getAllProfessionals.query>
 >[number]
 
-export const columns: ColumnDef<Professional>[] = [
+type ExtendedColumnDef<TData> = ColumnDef<TData> & {
+  hiddenAt?: string[]
+}
+
+export const columns: ExtendedColumnDef<Professional>[] = [
   {
+    id: 'usercode',
     accessorKey: 'usercode',
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Registro" />
@@ -25,6 +30,7 @@ export const columns: ColumnDef<Professional>[] = [
     enableHiding: false,
   },
   {
+    id: 'fullName',
     accessorKey: 'fullName',
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Nome" />
@@ -36,6 +42,7 @@ export const columns: ColumnDef<Professional>[] = [
     enableHiding: false,
   },
   {
+    id: 'email',
     accessorKey: 'email',
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="E-mail" />
@@ -43,10 +50,12 @@ export const columns: ColumnDef<Professional>[] = [
     cell: ({ row }) => (
       <div className="max-w-[200px]">{row.getValue('email')}</div>
     ),
+    hiddenAt: ['xs', 'sm', 'md'],
     enableSorting: false,
     enableHiding: false,
   },
   {
+    id: 'createdAt',
     accessorKey: 'createdAt',
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Criado em" />
@@ -56,6 +65,7 @@ export const columns: ColumnDef<Professional>[] = [
         {format(row.getValue('createdAt'), 'd MMM yyyy', { locale: ptBR })}
       </div>
     ),
+    hiddenAt: ['xs'],
     enableSorting: false,
     enableHiding: false,
   },

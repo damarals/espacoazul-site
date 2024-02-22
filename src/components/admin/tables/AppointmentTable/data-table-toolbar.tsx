@@ -3,7 +3,8 @@
 import { useState } from 'react'
 import { Table } from '@tanstack/react-table'
 
-import { Button } from '@/components/ui/button'
+import { Icons } from '@/components/icons'
+import { Button, buttonVariants } from '@/components/ui/button'
 import {
   Dialog,
   DialogContent,
@@ -27,18 +28,19 @@ export function DataTableToolbar<TData>({
 }: DataTableToolbarProps<TData>) {
   const [open, setOpen] = useState<boolean>(openInsertDialog)
   return (
-    <div className="flex items-center justify-between">
+    <div className="flex items-center justify-between gap-4">
       <Input
-        placeholder="Buscar por nome..."
-        value={(table.getColumn('fullName')?.getFilterValue() as string) ?? ''}
+        placeholder="Buscar por registro..."
+        value={(table.getColumn('usercode')?.getFilterValue() as string) ?? ''}
         onChange={(event) =>
-          table.getColumn('fullName')?.setFilterValue(event.target.value)
+          table.getColumn('usercode')?.setFilterValue(event.target.value)
         }
-        className="h-8 w-[150px] lg:w-[250px]"
+        className="h-10 md:min-w-[250px]"
       />
       <Dialog open={open} onOpenChange={setOpen}>
-        <DialogTrigger asChild>
-          <Button className="border bg-white">Nova Consulta</Button>
+        <DialogTrigger className={buttonVariants({ variant: 'outline' })}>
+          <Icons.filePlus className="block h-5 w-5 sm:hidden" />
+          <span className="hidden sm:block">Nova consulta</span>
         </DialogTrigger>
         <DialogContent className="bg-white sm:max-w-[425px]">
           <DialogHeader>

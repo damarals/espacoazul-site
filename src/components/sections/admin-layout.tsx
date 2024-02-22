@@ -16,7 +16,7 @@ import {
 } from '@/components/ui/drawer'
 import { ScrollArea } from '@/components/ui/scroll-area'
 import { Separator } from '@/components/ui/separator'
-import useTailwindBreakpoint from '@/hooks/useTailwindBreakpoint'
+import useTailwindBreakpoint from '@/hooks/use-tailwind-breakpoint'
 
 export default function AdminLayoutClient({
   children,
@@ -35,7 +35,7 @@ export default function AdminLayoutClient({
           ? false
           : isHardCollapsed,
     )
-  }, [isCollapsed, isHardCollapsed, twBreakpoint])
+  }, [isHardCollapsed, twBreakpoint])
 
   // trick to prevent radix from blocking the
   // body from receiving pointer events when the
@@ -50,6 +50,15 @@ export default function AdminLayoutClient({
       document.body.style.pointerEvents = 'auto'
     }
   }, [openMobileMenu])
+
+  async function handleCollapse() {
+    console.log('isCollapsed', isCollapsed)
+    setIsCollapsed(!isCollapsed)
+    setIsHardCollapsed(!isCollapsed)
+    document.cookie = `sidebar:collapsed=${JSON.stringify(
+      !isCollapsed,
+    )}; sameSite=strict;`
+  }
 
   return (
     <div className="flex h-screen max-h-screen min-h-0 flex-col">
@@ -129,13 +138,7 @@ export default function AdminLayoutClient({
           <button
             className="absolute -right-[11px] hidden rounded-md bg-[#eff8ff] p-0.5 data-[collapsed=true]:-right-3 data-[collapsed=true]:rounded-md data-[collapsed=true]:bg-[#eff8ff] data-[collapsed=true]:p-0.5 sm:block"
             data-collapsed={isCollapsed}
-            onClick={() => {
-              setIsCollapsed(!isCollapsed)
-              setIsHardCollapsed(!isCollapsed)
-              document.cookie = `sidebar:collapsed=${JSON.stringify(
-                !isCollapsed,
-              )}; sameSite=strict;`
-            }}
+            onClick={handleCollapse}
           >
             <Icons.sidebarArrowCollapse
               className="h-5 w-5 data-[hidden=true]:hidden"
@@ -162,7 +165,7 @@ export default function AdminLayoutClient({
             {/* Overview */}
             <div className="flex flex-col gap-1 px-3">
               <Link
-                href="/admin/pacientes?acao=novo"
+                href="/admin"
                 className="flex items-center gap-4 rounded-md px-3 py-2 hover:bg-blue-100 hover:text-blue-dark"
               >
                 <div
@@ -463,7 +466,7 @@ export default function AdminLayoutClient({
             </button>
           </div>
         </div>
-        <ScrollArea className="flex flex-1 flex-col gap-2 overflow-y-auto rounded-bl-2xl bg-white py-3 shadow-md">
+        <ScrollArea className="flex flex-1 flex-col gap-2 overflow-y-auto rounded-bl-2xl bg-white py-3 pt-[60px] shadow-md sm:pt-3">
           {children}
         </ScrollArea>
       </div>

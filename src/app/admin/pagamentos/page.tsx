@@ -11,7 +11,7 @@ export default function AdminPayments() {
   const action = searchParams.get('acao')
   return (
     <div className="flex flex-1 flex-col gap-6 px-7 py-3">
-      <h1 className="text-2xl font-medium">Pagamentos</h1>
+      <h1 className="text-3xl font-bold">Pagamentos</h1>
       <Suspense fallback={<SkeletonTable />}>
         <PatientPaymentsTable insertData={action === 'novo'} />
       </Suspense>

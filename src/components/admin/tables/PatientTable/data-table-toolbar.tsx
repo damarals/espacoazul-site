@@ -3,7 +3,8 @@
 import { useState } from 'react'
 import { Table } from '@tanstack/react-table'
 
-import { Button } from '@/components/ui/button'
+import { Icons } from '@/components/icons'
+import { Button, buttonVariants } from '@/components/ui/button'
 import {
   Dialog,
   DialogContent,
@@ -34,11 +35,12 @@ export function DataTableToolbar<TData>({
         onChange={(event) =>
           table.getColumn('fullName')?.setFilterValue(event.target.value)
         }
-        className="h-10 w-[300px] lg:w-[500px]"
+        className="h-10 md:min-w-[250px]"
       />
       <Dialog open={open} onOpenChange={setOpen}>
-        <DialogTrigger asChild>
-          <Button className="border bg-white">Novo Paciente</Button>
+        <DialogTrigger className={buttonVariants({ variant: 'outline' })}>
+          <Icons.userPlus className="block h-5 w-5 sm:hidden" />
+          <span className="hidden sm:block">Novo paciente</span>
         </DialogTrigger>
         <DialogContent className="bg-white sm:max-w-[425px]">
           <DialogHeader>

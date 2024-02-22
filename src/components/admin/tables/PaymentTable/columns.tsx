@@ -12,8 +12,13 @@ type PatientPayments = Awaited<
   ReturnType<typeof server.payments.getAllPatients.query>
 >[number]
 
-export const columns: ColumnDef<PatientPayments>[] = [
+type ExtendedColumnDef<TData> = ColumnDef<TData> & {
+  hiddenAt?: string[]
+}
+
+export const columns: ExtendedColumnDef<PatientPayments>[] = [
   {
+    id: 'usercode',
     accessorKey: 'usercode',
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Registro" />
@@ -25,6 +30,7 @@ export const columns: ColumnDef<PatientPayments>[] = [
     enableHiding: false,
   },
   {
+    id: 'fullName',
     accessorKey: 'fullName',
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Nome" />
@@ -32,6 +38,7 @@ export const columns: ColumnDef<PatientPayments>[] = [
     cell: ({ row }) => (
       <div className="max-w-[200px]">{row.getValue('fullName')}</div>
     ),
+    hiddenAt: ['xs'],
     enableSorting: true,
     enableHiding: false,
   },
@@ -79,6 +86,7 @@ export const columns: ColumnDef<PatientPayments>[] = [
         </div>
       )
     },
+    hiddenAt: ['xs', 'sm'],
     enableSorting: false,
     enableHiding: false,
   },

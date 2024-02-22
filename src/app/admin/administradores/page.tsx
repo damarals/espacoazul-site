@@ -11,7 +11,7 @@ export default function AdminAdministrators() {
   const action = searchParams.get('acao')
   return (
     <div className="flex flex-1 flex-col gap-6 px-7 py-3">
-      <h1 className="text-2xl font-medium">Administradores</h1>
+      <h1 className="text-3xl font-bold">Administradores</h1>
       <Suspense fallback={<SkeletonTable />}>
         <AdminTable insertData={action === 'novo'} />
       </Suspense>
