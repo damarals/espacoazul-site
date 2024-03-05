@@ -54,7 +54,6 @@ export default function AdminLayoutClient({
   }, [openMobileMenu])
 
   async function handleCollapse() {
-    console.log('isCollapsed', isCollapsed)
     setIsCollapsed(!isCollapsed)
     setIsHardCollapsed(!isCollapsed)
     document.cookie = `sidebar:collapsed=${JSON.stringify(

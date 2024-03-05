@@ -15,7 +15,6 @@ type PostProps = {
 }
 
 export default async function Post({ params }: PostProps) {
-  console.log(params)
   const post = await api.posts.getOne.query(params)
 
   if (!post) return <div>Postagem não encontrada</div>

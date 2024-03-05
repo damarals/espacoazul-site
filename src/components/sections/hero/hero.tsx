@@ -10,7 +10,7 @@ export default function Hero() {
     <div className="bg-radial-left relative min-h-screen">
       <div className="flex h-screen w-full flex-col gap-12 overflow-hidden px-10 pt-[60px] sm:pt-[80px] md:flex-row md:pb-20 xl:px-16">
         {/* Info */}
-        <div className="relative z-20 flex w-full flex-1 flex-col items-center justify-center gap-9 text-center text-primary-dark sm:gap-12 sm:gap-24 md:items-start md:gap-16 md:text-left lg:gap-24 lg:pr-10">
+        <div className="relative z-20 flex w-full flex-1 flex-col items-center justify-center gap-9 text-center text-primary-dark sm:gap-24 md:items-start md:gap-16 md:text-left lg:gap-24 lg:pr-10">
           {/* Text */}
           <div className="flex flex-col gap-3 sm:gap-4">
             <h3 className="hidden text-xl font-bold uppercase tracking-[0.45em] md:block 2xl:text-2xl">
@@ -20,7 +20,7 @@ export default function Hero() {
               <h1 className="max-w-2xl font-serif text-6xl font-extrabold sm:text-7xl md:text-6xl xl:text-7xl 2xl:text-8xl">
                 Lorem ipsum dolor sit amet.
               </h1>
-              <h2 className="text-xl font-normal md:max-w-2xl md:text-lg lg:text-xl">
+              <h2 className="text-lg font-normal sm:text-xl md:max-w-2xl md:text-lg lg:text-xl">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
                 diam nonummy nibh euismod tincidunt ut laoreet dolore magna
                 aliquam erat aliquam erat volutpat.
