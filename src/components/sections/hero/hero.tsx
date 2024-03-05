@@ -16,7 +16,7 @@ export default function Hero() {
             <h3 className="hidden text-xl font-bold uppercase tracking-[0.45em] md:block 2xl:text-2xl">
               Sobre nós
             </h3>
-            <div className="flex flex-col gap-6 sm:gap-10">
+            <div className="flex flex-col gap-5 sm:gap-10">
               <h1 className="max-w-2xl font-serif text-6xl font-extrabold sm:text-7xl md:text-6xl xl:text-7xl 2xl:text-8xl">
                 Lorem ipsum dolor sit amet.
               </h1>
@@ -121,7 +121,7 @@ export default function Hero() {
         </div>
       </div>
       {/* Shape */}
-      <div className="absolute -top-1 right-0 z-10 h-screen w-[340px] bg-[url('/hero-lines.svg')] bg-no-repeat" />
+      <div className="absolute -top-1 right-0 z-10 hidden h-screen w-[340px] bg-[url('/hero-lines.svg')] bg-no-repeat sm:block" />
       <ParticlesBackground />
     </div>
   )
