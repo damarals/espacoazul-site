@@ -94,9 +94,14 @@
   background-size: 10rem;
 }
 
-.bg-radial {
+.bg-radial-center {
   background: radial-gradient(75% 75% at 50% 30%,var(--white-ter),#86c7f9);
   background-image: radial-gradient(75% 75% at 50% 30%,var(--white-ter),#86c7f9);
+}
+
+.bg-radial-left {
+  background: radial-gradient(75% 75% at 30% 45%,var(--white-ter),#86c7f9);
+  background-image: radial-gradient(75% 75% at 30% 45%,var(--white-ter),#86c7f9);
 }
 
 .bg-wave {

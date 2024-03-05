@@ -12,7 +12,7 @@ export default async function Home() {
   return (
     <div className="flex flex-1 flex-col">
       <Hero />
-      <div className="z-10 bg-[#eff8ff]">
+      <div className="z-10 bg-gray-50">
         <div className="bg-grainy flex flex-col">
           <OurKids />
           <PostAndNews />

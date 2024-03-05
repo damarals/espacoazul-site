@@ -163,8 +163,28 @@ export default function ParticlesBackground() {
             fill: true,
             options: {
               images: [
+                // {
+                //   src: '/puzzle-piece.svg',
+                //   width: 32,
+                //   height: 32,
+                // },
+                // {
+                //   src: '/puzzle-pieces/1.svg',
+                //   width: 32,
+                //   height: 32,
+                // },
+                // {
+                //   src: '/puzzle-pieces/2.svg',
+                //   width: 32,
+                //   height: 32,
+                // },
                 {
-                  src: '/puzzle-piece.svg',
+                  src: '/puzzle-pieces/3.svg',
+                  width: 32,
+                  height: 32,
+                },
+                {
+                  src: '/puzzle-pieces/4.svg',
                   width: 32,
                   height: 32,
                 },
@@ -224,7 +244,7 @@ export default function ParticlesBackground() {
         },
         zLayers: 100,
       }}
-      className="absolute h-full w-full"
+      className="absolute top-0 h-full w-full"
     />
   )
 }

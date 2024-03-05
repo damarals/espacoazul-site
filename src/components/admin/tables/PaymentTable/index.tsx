@@ -9,13 +9,7 @@ import { columns as allColumns } from './columns'
 import { DataTablePagination } from './data-table-pagination'
 import { DataTableToolbar } from './data-table-toolbar'
 
-type PatientPaymentsTableProps = {
-  insertData: boolean
-}
-
-export default function PatientPaymentsTable({
-  insertData = false,
-}: PatientPaymentsTableProps) {
+export default function PatientPaymentsTable() {
   const [data] = api.payments.getAllPatients.useSuspenseQuery()
   const columns = useResponsiveColumns(allColumns)
 
@@ -26,7 +20,6 @@ export default function PatientPaymentsTable({
       columns={columns as ColumnDef<(typeof data)[number], typeof columns>[]}
       toolbar={DataTableToolbar}
       pagination={DataTablePagination}
-      insertData={insertData}
     />
   )
 }

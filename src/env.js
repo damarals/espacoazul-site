@@ -28,6 +28,25 @@ export const env = createEnv({
       // VERCEL_URL doesn't include `https` so it cant be validated as a URL
       process.env.VERCEL ? z.string() : z.string().url(),
     ),
+    CLOUDFLARE_ENDPOINT: z
+      .string()
+      .url()
+      .refine(
+        (str) => !str.includes('YOUR_CLOUDFLARE_ENDPOINT_HERE'),
+        'You forgot to change the default Cloudflare endpoint',
+      ),
+    CLOUDFLARE_ACCESS_KEY_ID: z
+      .string()
+      .refine(
+        (str) => !str.includes('YOUR_CLOUDFLARE_ACCESS_KEY_ID_HERE'),
+        'You forgot to change the default Cloudflare access key ID',
+      ),
+    CLOUDFLARE_SECRET_ACCESS_KEY: z
+      .string()
+      .refine(
+        (str) => !str.includes('YOUR_CLOUDFLARE_SECRET_ACCESS_KEY_HERE'),
+        'You forgot to change the default Cloudflare secret access key',
+      ),
   },
 
   /**
@@ -35,20 +54,7 @@ export const env = createEnv({
    * isn't built with invalid env vars. To expose them to the client, prefix them with
    * `NEXT_PUBLIC_`.
    */
-  client: {
-    NEXT_PUBLIC_SANITY_PROJECT_ID: z
-      .string()
-      .refine(
-        (str) => !str.includes('YOUR_SANITY_PROJECT_ID_HERE'),
-        'You forgot to change the default Sanity project ID',
-      ),
-    NEXT_PUBLIC_SANITY_DATASET: z
-      .string()
-      .refine(
-        (str) => !str.includes('YOUR_SANITY_DATASET_HERE'),
-        'You forgot to change the default Sanity dataset',
-      ),
-  },
+  client: {},
 
   /**
    * You can't destruct `process.env` as a regular object in the Next.js edge runtimes (e.g.
@@ -59,8 +65,9 @@ export const env = createEnv({
     NODE_ENV: process.env.NODE_ENV,
     NEXTAUTH_SECRET: process.env.NEXTAUTH_SECRET,
     NEXTAUTH_URL: process.env.NEXTAUTH_URL,
-    NEXT_PUBLIC_SANITY_PROJECT_ID: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
-    NEXT_PUBLIC_SANITY_DATASET: process.env.NEXT_PUBLIC_SANITY_DATASET,
+    CLOUDFLARE_ENDPOINT: process.env.CLOUDFLARE_ENDPOINT,
+    CLOUDFLARE_ACCESS_KEY_ID: process.env.CLOUDFLARE_ACCESS_KEY_ID,
+    CLOUDFLARE_SECRET_ACCESS_KEY: process.env.CLOUDFLARE_SECRET_ACCESS_KEY,
   },
   /**
    * Run `build` or `dev` with `SKIP_ENV_VALIDATION` to skip env validation. This is especially

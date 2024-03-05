@@ -9,11 +9,7 @@ import { columns as allColumns } from './columns'
 import { DataTablePagination } from './data-table-pagination'
 import { DataTableToolbar } from './data-table-toolbar'
 
-type AdminTableProps = {
-  insertData: boolean
-}
-
-export default function AdminTable({ insertData = false }: AdminTableProps) {
+export default function AdminTable() {
   const [data] = api.users.getAllAdmins.useSuspenseQuery()
   const columns = useResponsiveColumns(allColumns)
 
@@ -24,7 +20,6 @@ export default function AdminTable({ insertData = false }: AdminTableProps) {
       columns={columns as ColumnDef<(typeof data)[number], typeof columns>[]}
       toolbar={DataTableToolbar}
       pagination={DataTablePagination}
-      insertData={insertData}
     />
   )
 }

@@ -9,13 +9,7 @@ import { columns as allColumns } from './columns'
 import { DataTablePagination } from './data-table-pagination'
 import { DataTableToolbar } from './data-table-toolbar'
 
-type AppointmentTableProps = {
-  insertData: boolean
-}
-
-export default function AppointmentTable({
-  insertData = false,
-}: AppointmentTableProps) {
+export default function AppointmentTable() {
   const [data] = api.appointments.getAllAppointments.useSuspenseQuery()
   const columns = useResponsiveColumns(allColumns)
 
@@ -26,7 +20,6 @@ export default function AppointmentTable({
       columns={columns as ColumnDef<(typeof data)[number], typeof columns>[]}
       toolbar={DataTableToolbar}
       pagination={DataTablePagination}
-      insertData={insertData}
     />
   )
 }

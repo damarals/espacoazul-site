@@ -79,21 +79,88 @@ const createUsers = [
   }),
 ]
 
+const posts = [
+  {
+    title: 'Título da postagem 1',
+    content:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor, sapien quis aliquam ultricies, mauri s ante eleifend arcu, eget efficitur quam nunc a neque. Sed auctor, sapien quis aliquam ultricies, mauris ante eleifend arcu, eget efficitur quam nunc a neque.',
+    published: true,
+    banner: 'https://pub-23dab857c78448ae98d9436586ffc651.r2.dev/kids.jpg',
+    authorCode: 10001,
+  },
+  {
+    title: 'Título da postagem 2',
+    content:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor, sapien quis aliquam ultricies, mauri s ante eleifend arcu, eget efficitur quam nunc a neque. Sed auctor, sapien quis aliquam ultricies, mauris ante eleifend arcu, eget efficitur quam nunc a neque.',
+    published: true,
+    banner: 'https://pub-23dab857c78448ae98d9436586ffc651.r2.dev/kids.jpg',
+    authorCode: 10001,
+  },
+  {
+    title: 'Título da postagem 3',
+    content:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor, sapien quis aliquam ultricies, mauri s ante eleifend arcu, eget efficitur quam nunc a neque. Sed auctor, sapien quis aliquam ultricies, mauris ante eleifend arcu, eget efficitur quam nunc a neque.',
+    published: true,
+    banner: 'https://pub-23dab857c78448ae98d9436586ffc651.r2.dev/kids.jpg',
+    authorCode: 10001,
+  },
+  {
+    title: 'Título da postagem 4',
+    content:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor, sapien quis aliquam ultricies, mauri s ante eleifend arcu, eget efficitur quam nunc a neque. Sed auctor, sapien quis aliquam ultricies, mauris ante eleifend arcu, eget efficitur quam nunc a neque.',
+    published: true,
+    banner: 'https://pub-23dab857c78448ae98d9436586ffc651.r2.dev/kids.jpg',
+    authorCode: 10001,
+  },
+]
+
+const createPosts = posts.map((post) => async () => {
+  return prisma.$transaction(async (tx) => {
+    const postCreated = await tx.post.create({
+      data: {
+        slug: post.title.toLowerCase().replace(/ /g, '-'),
+        title: post.title,
+        content: post.content,
+        published: post.published,
+        banner: post.banner,
+        author: {
+          connect: {
+            usercode: post.authorCode,
+          },
+        },
+      },
+    })
+
+    return tx.post.update({
+      where: { id: postCreated.id },
+      data: {
+        slug: `${postCreated.slug}${postCreated.id}`,
+      },
+    })
+  })
+})
+
 async function seedUsersTables() {
   await prisma.$transaction([...createRoles, createAdminUser, ...createUsers])
+}
+
+async function seedMainTables() {
+  for (const createPost of createPosts) await createPost()
 }
 
 async function nuke() {
   console.log('🚀 Nuking database records')
   return prisma.$transaction(async (prisma) => {
-    await prisma.role.deleteMany()
-    await prisma.user.deleteMany()
+    await prisma.post.deleteMany()
+    // await prisma.role.deleteMany()
+    // await prisma.user.deleteMany()
   })
 }
 
 async function seed() {
   console.log('🌱 Seeding database')
-  await seedUsersTables()
+  // await seedUsersTables()
+  await seedMainTables()
 }
 
 async function main() {

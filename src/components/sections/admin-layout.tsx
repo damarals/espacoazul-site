@@ -3,6 +3,7 @@
 import { PropsWithChildren, useEffect, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 
 import { cn } from '@/lib/utils'
 import { UserButton } from '@/components/auth'
@@ -22,6 +23,7 @@ export default function AdminLayoutClient({
   children,
   defaultCollapsed = false,
 }: PropsWithChildren & { defaultCollapsed: boolean }) {
+  const activePath = usePathname()
   const [openMobileMenu, setOpenMobileMenu] = useState(false)
   const [isCollapsed, setIsCollapsed] = useState(defaultCollapsed)
   const [isHardCollapsed, setIsHardCollapsed] = useState(false)
@@ -61,12 +63,12 @@ export default function AdminLayoutClient({
   }
 
   return (
-    <div className="flex h-screen max-h-screen min-h-0 flex-col">
+    <div
+      className="group flex h-screen max-h-screen min-h-0 flex-col"
+      data-sidebar-collapsed={isCollapsed}
+    >
       <div className="fixed top-0 z-40 flex w-full border-b-2 sm:sticky sm:border-none">
-        <div
-          className="relative flex w-72 items-center bg-white px-4 data-[collapsed=true]:w-20 sm:bg-[#eff8ff]"
-          data-collapsed={isCollapsed}
-        >
+        <div className="relative flex w-72 items-center bg-white px-4 group-data-[sidebar-collapsed=true]:w-20 sm:bg-gray-50">
           <Drawer
             open={openMobileMenu}
             onOpenChange={setOpenMobileMenu}
@@ -136,329 +138,101 @@ export default function AdminLayoutClient({
             </Link>
           </div>
           <button
-            className="absolute -right-[11px] hidden rounded-md bg-[#eff8ff] p-0.5 data-[collapsed=true]:-right-3 data-[collapsed=true]:rounded-md data-[collapsed=true]:bg-[#eff8ff] data-[collapsed=true]:p-0.5 sm:block"
-            data-collapsed={isCollapsed}
+            className="absolute -right-[12px] z-20 hidden rounded-full border bg-gray-50 p-0.5 shadow-sm sm:block"
             onClick={handleCollapse}
           >
-            <Icons.sidebarArrowCollapse
-              className="h-5 w-5 data-[hidden=true]:hidden"
-              data-hidden={isCollapsed}
-            />
-            <Icons.sidebarArrowExpand
-              className="h-5 w-5 data-[hidden=true]:hidden"
-              data-hidden={!isCollapsed}
-            />
+            {isCollapsed ? (
+              <Icons.chevronRight className="-mr-[2px] h-5 w-5" />
+            ) : (
+              <Icons.chevronLeft className="h-5 w-5" />
+            )}
           </button>
         </div>
-        <div className="flex h-[56px] flex-1 items-center justify-end gap-3 bg-white px-6 py-2">
+        <div className="z-10 flex h-[56px] flex-1 items-center justify-end gap-3 bg-white px-6 py-2 sm:shadow-[rgba(0,0,0,0.1)_0px_0px_4px_0px]">
           <UserButton name="Admin" />
         </div>
       </div>
       <Separator className="bg-gray-200" />
       <div className="flex w-full flex-1 justify-center sm:max-h-[calc(100vh-58px)]">
-        <div
-          className="hidden w-72 flex-col gap-6 bg-[#eff8ff] py-3.5 data-[hidden=true]:hidden data-[collapsed=true]:w-20 sm:flex sm:justify-between data-[hidden=true]:sm:block"
-          data-collapsed={isCollapsed}
-        >
+        <div className="hidden w-72 flex-col gap-6 bg-gray-50 py-3.5 group-data-[sidebar-collapsed=true]:w-20 sm:flex sm:justify-between">
           {/* Menu */}
-          <div className="flex flex-col gap-6">
+          <div className="flex flex-col gap-5">
             {/* Overview */}
-            <div className="flex flex-col gap-1 px-3">
-              <Link
-                href="/admin"
-                className="flex items-center gap-4 rounded-md px-3 py-2 hover:bg-blue-100 hover:text-blue-dark"
-              >
-                <div
-                  className="flex w-6 justify-center data-[collapsed=true]:w-8"
-                  data-collapsed={isCollapsed}
-                >
-                  <Icons.gridSearch className="h-[22px] w-[22px]" />
-                </div>
-                <span
-                  className="whitespace-nowrap data-[hidden=true]:hidden"
-                  data-hidden={isCollapsed}
-                >
+            <div className="gap-1.5 px-3">
+              <SidebarItem href="/admin" active={activePath === '/admin'}>
+                <Icons.grid className="h-[22px] w-[22px]" />
+                <span className="whitespace-nowrap font-medium group-data-[sidebar-collapsed=true]:hidden">
                   Visão Geral
                 </span>
-              </Link>
+              </SidebarItem>
             </div>
-            {/* Patients Group */}
-            <div className="flex flex-col gap-2 px-3">
-              <span className="justify-start px-3 text-sm font-medium uppercase text-gray-700">
-                <p
-                  className="data-[hidden=true]:hidden"
-                  data-hidden={isCollapsed}
-                >
+            {/* Clinic Group */}
+            <SidebarGroup title="Clínica">
+              <SidebarItem
+                href="/admin/pacientes"
+                active={activePath === '/admin/pacientes'}
+              >
+                <Icons.user className="h-[22px] w-[22px]" />
+                <span className="whitespace-nowrap font-medium group-data-[sidebar-collapsed=true]:hidden">
                   Pacientes
-                </p>
-                <p
-                  className="data-[hidden=true]:hidden"
-                  data-hidden={!isCollapsed}
-                >
-                  Pac
-                </p>
-              </span>
-              <div className="flex flex-col gap-1">
-                <Link
-                  href="/admin/pacientes?acao=novo"
-                  className="flex items-center gap-4 rounded-md px-3 py-2 hover:bg-blue-100 hover:text-blue-dark"
-                >
-                  <div
-                    className="flex w-6 justify-center data-[collapsed=true]:w-8"
-                    data-collapsed={isCollapsed}
-                  >
-                    <Icons.userPlus className="h-[22px] w-[22px]" />
-                  </div>
-                  <span
-                    className="whitespace-nowrap data-[hidden=true]:hidden"
-                    data-hidden={isCollapsed}
-                  >
-                    Novo Paciente
-                  </span>
-                </Link>
-                <Link
-                  href="/admin/pacientes"
-                  className="flex items-center gap-4 rounded-md px-3 py-2 hover:bg-blue-100 hover:text-blue-dark"
-                >
-                  <div
-                    className="flex w-6 justify-center data-[collapsed=true]:w-8"
-                    data-collapsed={isCollapsed}
-                  >
-                    <Icons.users className="h-[22px] w-[22px]" />
-                  </div>
-                  <span
-                    className="whitespace-nowrap data-[hidden=true]:hidden"
-                    data-hidden={isCollapsed}
-                  >
-                    Ver Pacientes
-                  </span>
-                </Link>
-              </div>
-            </div>
-            {/* Appointments Group */}
-            <div className="flex flex-col gap-2 px-3">
-              <span className="justify-start px-3 text-sm font-medium uppercase text-gray-700">
-                <p
-                  className="data-[hidden=true]:hidden"
-                  data-hidden={isCollapsed}
-                >
+                </span>
+              </SidebarItem>
+              <SidebarItem
+                href="/admin/consultas"
+                active={activePath === '/admin/consultas'}
+              >
+                <Icons.callendar className="h-[22px] w-[22px]" />
+                <span className="block whitespace-nowrap font-medium group-data-[sidebar-collapsed=true]:hidden">
                   Consultas
-                </p>
-                <p
-                  className="data-[hidden=true]:hidden"
-                  data-hidden={!isCollapsed}
-                >
-                  Con
-                </p>
-              </span>
-              <div className="flex flex-col gap-1">
-                <Link
-                  href="/admin/consultas?acao=novo"
-                  className="flex items-center gap-4 rounded-md px-3 py-2 hover:bg-blue-100 hover:text-blue-dark"
-                >
-                  <div
-                    className="flex w-6 justify-center data-[collapsed=true]:w-8"
-                    data-collapsed={isCollapsed}
-                  >
-                    <Icons.filePlus className="h-[22px] w-[22px]" />
-                  </div>
-                  <span
-                    className="block whitespace-nowrap data-[hidden=true]:hidden"
-                    data-hidden={isCollapsed}
-                  >
-                    Nova Consulta
-                  </span>
-                </Link>
-                <Link
-                  href="/admin/consultas"
-                  className="flex items-center gap-4 rounded-md px-3 py-2 hover:bg-blue-100 hover:text-blue-dark"
-                >
-                  <div
-                    className="flex w-6 justify-center data-[collapsed=true]:w-8"
-                    data-collapsed={isCollapsed}
-                  >
-                    <Icons.searchDocument className="h-[22px] w-[22px]" />
-                  </div>
-                  <span
-                    className="block whitespace-nowrap data-[hidden=true]:hidden"
-                    data-hidden={isCollapsed}
-                  >
-                    Ver Consultas
-                  </span>
-                </Link>
-              </div>
-            </div>
-            {/* Payments Group */}
-            <div className="flex flex-col gap-2 px-3">
-              <span className="justify-start px-3 text-sm font-medium uppercase text-gray-700">
-                <p
-                  className="data-[hidden=true]:hidden"
-                  data-hidden={isCollapsed}
-                >
-                  Pagamentos
-                </p>
-                <p
-                  className="data-[hidden=true]:hidden"
-                  data-hidden={!isCollapsed}
-                >
-                  Pag
-                </p>
-              </span>
-              <div className="flex flex-col gap-1">
-                <Link
-                  href="/admin/pagamentos?acao=novo"
-                  className="flex items-center gap-4 rounded-md px-3 py-2 hover:bg-blue-100 hover:text-blue-dark"
-                >
-                  <div
-                    className="flex w-6 justify-center data-[collapsed=true]:w-8"
-                    data-collapsed={isCollapsed}
-                  >
-                    <Icons.creditCard className="h-[22px] w-[22px]" />
-                  </div>
-                  <span
-                    className="block whitespace-nowrap data-[hidden=true]:hidden"
-                    data-hidden={isCollapsed}
-                  >
-                    Novo Pagamento
-                  </span>
-                </Link>
-                <Link
-                  href="/admin/pagamentos"
-                  className="flex items-center gap-4 rounded-md px-3 py-2 hover:bg-blue-100 hover:text-blue-dark"
-                >
-                  <div
-                    className="flex w-6 justify-center data-[collapsed=true]:w-8"
-                    data-collapsed={isCollapsed}
-                  >
-                    <Icons.receipt className="h-[22px] w-[22px]" />
-                  </div>
-                  <span
-                    className="block whitespace-nowrap data-[hidden=true]:hidden"
-                    data-hidden={isCollapsed}
-                  >
-                    Ver Pagamentos
-                  </span>
-                </Link>
-              </div>
-            </div>
-            {/* Professionals Group */}
-            <div className="flex flex-col gap-2 px-3">
-              <span className="justify-start px-3 text-sm font-medium uppercase text-gray-700">
-                <p
-                  className="data-[hidden=true]:hidden"
-                  data-hidden={isCollapsed}
-                >
+                </span>
+              </SidebarItem>
+              <SidebarItem
+                href="/admin/profissionais"
+                active={activePath === '/admin/profissionais'}
+              >
+                <Icons.users className="h-[22px] w-[22px]" />
+                <span className="block whitespace-nowrap font-medium group-data-[sidebar-collapsed=true]:hidden">
                   Profissionais
-                </p>
-                <p
-                  className="data-[hidden=true]:hidden"
-                  data-hidden={!isCollapsed}
-                >
-                  Pro
-                </p>
-              </span>
-              <div className="flex flex-col gap-1">
-                <Link
-                  href="/admin/profissionais?acao=novo"
-                  className="flex items-center gap-4 rounded-md px-3 py-2 hover:bg-blue-100 hover:text-blue-dark"
-                >
-                  <div
-                    className="flex w-6 justify-center data-[collapsed=true]:w-8"
-                    data-collapsed={isCollapsed}
-                  >
-                    <Icons.doctor className="h-[22px] w-[22px]" />
-                  </div>
-                  <span
-                    className="block whitespace-nowrap data-[hidden=true]:hidden"
-                    data-hidden={isCollapsed}
-                  >
-                    Novo Profissional
-                  </span>
-                </Link>
-                <Link
-                  href="/admin/profissionais"
-                  className="flex items-center gap-4 rounded-md px-3 py-2 hover:bg-blue-100 hover:text-blue-dark"
-                >
-                  <div
-                    className="flex w-6 justify-center data-[collapsed=true]:w-8"
-                    data-collapsed={isCollapsed}
-                  >
-                    <Icons.medical className="h-[22px] w-[22px]" />
-                  </div>
-                  <span
-                    className="block whitespace-nowrap data-[hidden=true]:hidden"
-                    data-hidden={isCollapsed}
-                  >
-                    Ver Profissionais
-                  </span>
-                </Link>
-              </div>
-            </div>
+                </span>
+              </SidebarItem>
+            </SidebarGroup>
+            {/* Payments Group */}
+            <SidebarGroup title="Financeiro">
+              <SidebarItem
+                href="/admin/pagamentos"
+                active={activePath === '/admin/pagamentos'}
+              >
+                <Icons.card className="h-[22px] w-[22px]" />
+                <span className="block whitespace-nowrap font-medium group-data-[sidebar-collapsed=true]:hidden">
+                  Pagamentos
+                </span>
+              </SidebarItem>
+            </SidebarGroup>
             {/* Admin Group */}
-            <div className="flex flex-col gap-2 px-3">
-              <span className="justify-start px-3 text-sm font-medium uppercase text-gray-700">
-                <p
-                  className="data-[hidden=true]:hidden"
+            <SidebarGroup title="Administração">
+              <SidebarItem
+                href="/admin/administradores"
+                active={activePath === '/admin/administradores'}
+              >
+                <Icons.adminGroup className="h-[22px] w-[22px]" />
+                <span
+                  className="block whitespace-nowrap font-medium group-data-[sidebar-collapsed=true]:hidden"
                   data-hidden={isCollapsed}
                 >
-                  Administração
-                </p>
-                <p
-                  className="data-[hidden=true]:hidden"
-                  data-hidden={!isCollapsed}
-                >
-                  Adm
-                </p>
-              </span>
-              <div className="flex flex-col gap-1">
-                <Link
-                  href="/admin/administradores?acao=novo"
-                  className="flex items-center gap-4 rounded-md px-3 py-2 hover:bg-blue-100 hover:text-blue-dark"
-                >
-                  <div
-                    className="flex w-6 justify-center data-[collapsed=true]:w-8"
-                    data-collapsed={isCollapsed}
-                  >
-                    <Icons.admin className="h-[22px] w-[22px]" />
-                  </div>
-                  <span
-                    className="block whitespace-nowrap data-[hidden=true]:hidden"
-                    data-hidden={isCollapsed}
-                  >
-                    Novo Administrador
-                  </span>
-                </Link>
-                <Link
-                  href="/admin/administradores"
-                  className="flex items-center gap-4 rounded-md px-3 py-2 hover:bg-blue-100 hover:text-blue-dark"
-                >
-                  <div
-                    className="flex w-6 justify-center data-[collapsed=true]:w-8"
-                    data-collapsed={isCollapsed}
-                  >
-                    <Icons.adminGroup className="h-[22px] w-[22px]" />
-                  </div>
-                  <span
-                    className="block whitespace-nowrap data-[hidden=true]:hidden"
-                    data-hidden={isCollapsed}
-                  >
-                    Ver Administradores
-                  </span>
-                </Link>
-              </div>
-            </div>
+                  Administradores
+                </span>
+              </SidebarItem>
+            </SidebarGroup>
           </div>
           {/* Footer */}
           <div className="flex flex-col gap-2 px-3">
-            <button className="flex items-center gap-4 rounded-md px-3 py-2 hover:bg-blue-100 hover:text-blue-dark">
-              <div
-                className="flex w-6 justify-center data-[collapsed=true]:w-8"
-                data-collapsed={isCollapsed}
-              >
-                <Icons.logout className="h-[22px] w-[22px]" />
-              </div>
+            <button
+              className="flex h-10 items-center gap-4 rounded-md px-3 py-2 hover:bg-gray-100 group-data-[sidebar-collapsed=true]:justify-center"
+              data-collapsed={isCollapsed}
+            >
+              <Icons.logout className="h-[22px] w-[22px]" />
               <span
-                className="block whitespace-nowrap data-[hidden=true]:hidden"
+                className="block whitespace-nowrap font-medium group-data-[sidebar-collapsed=true]:hidden"
                 data-hidden={isCollapsed}
               >
                 Sair
@@ -471,6 +245,43 @@ export default function AdminLayoutClient({
         </ScrollArea>
       </div>
     </div>
+  )
+}
+
+function SidebarGroup({
+  title,
+  children,
+}: PropsWithChildren<{ title: string }>) {
+  const minifiedTitle = title.split('').slice(0, 3).join('')
+  return (
+    <div className="flex flex-col gap-1.5 px-3">
+      <span className="justify-start px-3 text-xs font-medium uppercase text-gray-700">
+        <p className="group-data-[sidebar-collapsed=true]:hidden">{title}</p>
+        <p className="text-center group-data-[sidebar-collapsed=false]:hidden">
+          {minifiedTitle}
+        </p>
+      </span>
+      <div className="flex flex-col gap-1">{children}</div>
+    </div>
+  )
+}
+
+function SidebarItem({
+  href,
+  children,
+  active,
+}: PropsWithChildren & {
+  href: string
+  active: boolean
+}) {
+  return (
+    <Link
+      href={href}
+      className="flex h-10 items-center gap-4 rounded-md px-3 py-2 hover:bg-gray-100 data-[active=true]:bg-blue-100 data-[active=true]:text-blue-dark group-data-[sidebar-collapsed=true]:justify-center"
+      data-active={active}
+    >
+      {children}
+    </Link>
   )
 }
 

@@ -1,5 +1,6 @@
 import { appointmentsRouter } from '@/server/api/routers/appointments'
 import { paymentsRouter } from '@/server/api/routers/payments'
+import { postsRouter } from '@/server/api/routers/posts'
 import { usersRouter } from '@/server/api/routers/users'
 import { createTRPCRouter } from '@/server/api/trpc'
 
@@ -11,6 +12,7 @@ import { createTRPCRouter } from '@/server/api/trpc'
 export const appRouter = createTRPCRouter({
   appointments: appointmentsRouter,
   payments: paymentsRouter,
+  posts: postsRouter,
   users: usersRouter,
 })
 

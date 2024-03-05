@@ -29,7 +29,6 @@ interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[]
   toolbar: ElementType
   pagination: ElementType
-  insertData: boolean
 }
 
 export default function DataTable<TData, TValue>({
@@ -37,7 +36,6 @@ export default function DataTable<TData, TValue>({
   columns,
   toolbar: Toolbar,
   pagination: Pagination,
-  insertData = false,
 }: DataTableProps<TData, TValue>) {
   const [rowSelection, setRowSelection] = useState({})
   const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({})
@@ -72,7 +70,7 @@ export default function DataTable<TData, TValue>({
 
   return (
     <div className="space-y-4">
-      <Toolbar table={table} openInsertDialog={insertData} />
+      <Toolbar table={table} />
       <div className="rounded-md border">
         <Table>
           <TableHeader>

@@ -19,14 +19,11 @@ export default function AdminDashboard() {
           <TabsTrigger value="appointments" disabled>
             Consultas
           </TabsTrigger>
-          <TabsTrigger value="payments" disabled>
-            Pagamentos
-          </TabsTrigger>
           <TabsTrigger value="professionals" disabled>
             Profissionais
           </TabsTrigger>
-          <TabsTrigger value="administrators" disabled>
-            Administradores
+          <TabsTrigger value="payments" disabled>
+            Pagamentos
           </TabsTrigger>
         </TabsList>
         <TabsContent value="patients" className="flex flex-1 flex-col gap-4">

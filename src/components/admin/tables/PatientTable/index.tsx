@@ -9,13 +9,7 @@ import { columns as allColumns } from './columns'
 import { DataTablePagination } from './data-table-pagination'
 import { DataTableToolbar } from './data-table-toolbar'
 
-type PatientTableProps = {
-  insertData: boolean
-}
-
-export default function PatientTable({
-  insertData = false,
-}: PatientTableProps) {
+export default function PatientTable() {
   const [data] = api.users.getAllPatients.useSuspenseQuery()
   const columns = useResponsiveColumns(allColumns)
 
@@ -26,7 +20,6 @@ export default function PatientTable({
       columns={columns as ColumnDef<(typeof data)[number], typeof columns>[]}
       toolbar={DataTableToolbar}
       pagination={DataTablePagination}
-      insertData={insertData}
     />
   )
 }

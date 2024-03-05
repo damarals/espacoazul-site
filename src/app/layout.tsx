@@ -37,7 +37,7 @@ export default async function RootLayout({ children }: PropsWithChildren) {
         petrona.variable,
       )}
     >
-      <body className="bg-[#eff8ff]">
+      <body className="bg-gray-50">
         <TRPCReactProvider cookies={cookies().toString()}>
           {children}
           <Toaster />

@@ -26,9 +26,9 @@ export default function ImageGallery() {
       <CarouselContent className="h-full">
         {Array.from({ length: 6 }).map((_, index) => (
           <CarouselItem key={index} className="basis-3/4 lg:basis-1/2">
-            <div className="relative mx-0 flex h-full flex-col items-center justify-center rounded-xl bg-red-300 p-2">
+            <div className="relative mx-0 flex h-full flex-col items-center justify-center rounded-xl bg-gray-300 p-2">
               <Image
-                src="/kids.jpg"
+                src="https://pub-23dab857c78448ae98d9436586ffc651.r2.dev/kids.jpg"
                 alt=""
                 fill
                 style={{ objectFit: 'cover' }}

@@ -1,8 +1,8 @@
 'use client'
 
-import { useState } from 'react'
 import { Table } from '@tanstack/react-table'
 
+import { cn } from '@/lib/utils'
 import { Icons } from '@/components/icons'
 import { Button, buttonVariants } from '@/components/ui/button'
 import {
@@ -19,14 +19,11 @@ import { Label } from '@/components/ui/label'
 
 interface DataTableToolbarProps<TData> {
   table: Table<TData>
-  openInsertDialog: boolean
 }
 
 export function DataTableToolbar<TData>({
   table,
-  openInsertDialog,
 }: DataTableToolbarProps<TData>) {
-  const [open, setOpen] = useState<boolean>(openInsertDialog)
   return (
     <div className="flex items-center justify-between gap-4">
       <Input
@@ -37,10 +34,12 @@ export function DataTableToolbar<TData>({
         }
         className="h-10 md:min-w-[250px]"
       />
-      <Dialog open={open} onOpenChange={setOpen}>
-        <DialogTrigger className={buttonVariants({ variant: 'outline' })}>
-          <Icons.doctor className="block h-5 w-5 sm:hidden" />
-          <span className="hidden sm:block">Novo pagamento</span>
+      <Dialog>
+        <DialogTrigger
+          className={cn(buttonVariants({ variant: 'outline' }), 'gap-1.5')}
+        >
+          <Icons.plus className="h-4 w-4" />
+          <span className="hidden sm:block">Novo profissional</span>
         </DialogTrigger>
         <DialogContent className="bg-white sm:max-w-[425px]">
           <DialogHeader>
