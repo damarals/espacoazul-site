@@ -8,7 +8,7 @@ import ParticlesBackground from './particles-background'
 export default function Hero() {
   return (
     <div className="bg-radial-left relative min-h-screen">
-      <div className="flex h-screen w-full flex-col gap-12 overflow-hidden px-10 pt-[60px] sm:pt-[80px] md:flex-row md:pb-20 xl:px-16">
+      <div className="flex h-screen w-full flex-col gap-12 overflow-hidden px-10 pt-[50px] sm:pt-[80px] md:flex-row md:pb-20 xl:px-16">
         {/* Info */}
         <div className="relative z-20 flex w-full flex-1 flex-col items-center justify-center gap-9 text-center text-primary-dark sm:gap-24 md:items-start md:gap-16 md:text-left lg:gap-24 lg:pr-10">
           {/* Text */}
